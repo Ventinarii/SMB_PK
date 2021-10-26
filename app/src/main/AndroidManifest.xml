@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
         <activity
+            android:name=".AddOrEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OptionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
