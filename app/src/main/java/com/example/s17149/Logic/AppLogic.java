@@ -32,7 +32,7 @@ public class AppLogic {
     //colors
     public static final String[]
             colorMC = {"colorMCr","colorMCg","colorMCb"},//mainColor
-            colorTC = {"colorMCr","colorMCg","colorMCb"},//trimColor
+            colorTC = {"colorTCr","colorTCg","colorTCb"},//trimColor
             colorMT = {"colorMTr","colorMTg","colorMTb"},//textMainColor
             colorTT = {"colorTTr","colorTTg","colorTTb"};//textTrimColor
     public static final String
@@ -98,7 +98,7 @@ public class AppLogic {
             }
             //=-
 
-            spEditor.apply();
+            spEditor.commit();
         }
         reLoadSettings();
     }
