@@ -15,7 +15,7 @@ import com.example.s17149.R
  */
 class UiListRow : View {
 
-    private var _exampleString: String? = null // TODO: use a default from R.string...
+    private var _exampleString: String? = "some data" // TODO: use a default from R.string...
     private var _exampleColor: Int = Color.RED // TODO: use a default from R.color...
     private var _exampleDimension: Float = 0f // TODO: use a default from R.dimen...
 
@@ -117,7 +117,7 @@ class UiListRow : View {
         textPaint.let {
             it.textSize = exampleDimension
             it.color = exampleColor
-            textWidth = it.measureText(exampleString)
+            textWidth = it.measureText("some data")//it.measureText(exampleString)
             textHeight = it.fontMetrics.bottom
         }
     }
