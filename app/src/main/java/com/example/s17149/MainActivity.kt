@@ -16,4 +16,12 @@ class MainActivity : AppCompatActivity() {
 
         AppLogic.mainActivity = this;
     }
+    fun BuAc01ProductList(view: android.view.View) {
+
+
+    }
+    fun BuAcXSettings(view: android.view.View) {
+
+
+    }
 }
