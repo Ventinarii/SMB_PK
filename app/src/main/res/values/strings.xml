@@ -6,6 +6,6 @@
     <string name="ActivityMainTitle">s17149 SMB PK v EN</string>
     <string name="ActivityMain01ProductList">Product list - fP01</string>
     <string name="ActivityMainXSettings">Settings</string>
-    <string name="ActivityBackButton">Back</string>
-    <string name="ActivityAddOrEditAddButton">Add</string>
+    <string name="ActivityBackButton">BACK</string>
+    <string name="ActivityProductListAddButton">Add to list</string>
 </resources>

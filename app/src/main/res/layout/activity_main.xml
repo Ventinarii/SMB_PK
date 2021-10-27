@@ -30,14 +30,14 @@
                 android:id="@+id/ProductListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="BuAc01ProductList"
+                android:onClick="buAc01ProductList"
                 android:text="@string/ActivityMain01ProductList" />
 
             <Button
                 android:id="@+id/SettingsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="BuAcXSettings"
+                android:onClick="buAcXSettings"
                 android:text="@string/ActivityMainXSettings" />
 
         </LinearLayout>
