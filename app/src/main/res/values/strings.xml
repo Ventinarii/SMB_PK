@@ -1,11 +1,31 @@
 <resources>
-    <string name="app_name">S17149</string>
+    <string name="app_name" translatable="false">S17149</string>
     <string name="UiListRowEdit">EDIT</string>
     <string name="UIListRowDelete">DELETE</string>
-    <string name="UiListRowTextNoValue">No Data - start me</string>
+    <string name="UiListRowNameNoValue">Name of product</string>
+    <string name="UiListRowQtyNoValue">Qty of product</string>
+    <string name="UiListRowCostNoValue">Cost of product</string>
     <string name="ActivityMainTitle">s17149 SMB PK v EN</string>
-    <string name="ActivityMain01ProductList">Product list - fP01</string>
+    <string name="ActivityMain01ProductList" translatable="false">Product list - fP01</string>
     <string name="ActivityMainXSettings">Settings</string>
     <string name="ActivityBackButton">BACK</string>
     <string name="ActivityProductListAddButton">Add to list</string>
+    <string name="ActivityAddOrEditObject_UID">Edit (here will be name)</string>
+    <string name="ActivityAddOrEditDeleteButton">DELETE</string>
+    <string name="ActivityAddOrEditSaveButton">SAVE</string>
+    <string name="ActivityAddOrEditObjectNameHint">ObjectName</string>
+    <string name="ActivityAddOrEditObjectQtyHint">ObjectQty</string>
+    <string name="ActivityAddOrEditObjectPriceHint">ObjectPrice</string>
+    <string name="ActivityOptionsTitle">OPTIONS</string>
+    <string name="ActivityOptionsColorPickRed" translatable="false">Red__</string>
+    <string name="ActivityOptionsColorPickGreen" translatable="false">Green</string>
+    <string name="ActivityOptionsColorPickBlue" translatable="false">Blue_ </string>
+    <string name="ActivityOptionsMaincolor" translatable="false">mainColor</string>
+    <string name="ActivityOptionsTrimcolor" translatable="false">trimColor</string>
+    <string name="ActivityOptionsTextmaincolor" translatable="false">textMainColor</string>
+    <string name="ActivityOptionsTexttrimcolor" translatable="false">textTrimColor</string>
+    <string name="ActivityOptionsMaintextsize" translatable="false">mainTextSize</string>
+    <string name="ActivityOptionsSaveButton">SAVE</string>
+    <string name="ActivityOptionsAutocontrastcolor" translatable="false">autoContrastColor</string>
+    <string name="ActivityProductListSwich_modeButton">Swich Mode</string>
 </resources>

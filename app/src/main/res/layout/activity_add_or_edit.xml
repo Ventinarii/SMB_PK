@@ -9,11 +9,11 @@
     tools:context=".AddOrEditActivity">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/Object_UID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:text="Edit (here will be name)"
+        android:text="@string/ActivityAddOrEditObject_UID"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF" />
 
@@ -29,22 +29,34 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/nameTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="product name"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:text="Name" />
+                android:hint="@string/ActivityAddOrEditObjectNameHint"
+                android:inputType="text"
+                android:minHeight="48dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/qtyTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="amount"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:text="Name" />
+                android:hint="@string/ActivityAddOrEditObjectQtyHint"
+                android:inputType="number"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/priceTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="price"
+                android:ems="10"
+                android:hint="@string/ActivityAddOrEditObjectPriceHint"
+                android:inputType="numberSigned"
+                android:minHeight="48dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -54,24 +66,26 @@
         android:layout_weight="0">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/deleteButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
-            android:text="DELETE"
+            android:text="@string/ActivityAddOrEditDeleteButton"
+            android:onClick="buAcDelete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/space"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/saveButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
-            android:text="SAVE"
+            android:text="@string/ActivityAddOrEditSaveButton"
+            android:onClick="buAcSave"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/space"

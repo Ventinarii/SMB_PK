@@ -15,6 +15,9 @@ class OptionsActivity : AppCompatActivity() {
         biding = ActivityOptionsBinding.inflate(layoutInflater);
         setContentView(biding.root);
 
-        AppLogic.optionsActivity = this;
+    }
+
+    fun buAcOptionsBack(view: android.view.View) {
+        startActivity(AppLogic.mainActivity);
     }
 }

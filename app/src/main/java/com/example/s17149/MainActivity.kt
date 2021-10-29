@@ -1,6 +1,7 @@
 package com.example.s17149
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.s17149.Logic.AppLogic
@@ -16,17 +17,21 @@ class MainActivity : AppCompatActivity() {
         biding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(biding.root);
 
-        AppLogic.mainActivity = this;
-        AppLogic.sp = getPreferences(Context.MODE_PRIVATE);
+        AppLogic.sp = getPreferences(MODE_PRIVATE);
         AppLogic.spEditor = AppLogic.sp.edit();
-        AppLogic.onAppStart();
+
+        AppLogic.onAppStart(this);
+
+        AppLogic.mainActivity = Intent(this,MainActivity::class.java);
+        AppLogic.productListActivity = Intent(this,ProductListActivity::class.java);
+        AppLogic.addOrEditActivity = Intent(this,AddOrEditActivity::class.java);
+
+        AppLogic.optionsActivity = Intent(this,OptionsActivity::class.java);
     }
     fun buAc01ProductList(view: android.view.View) {
-
-
+        startActivity(AppLogic.productListActivity);
     }
     fun buAcXSettings(view: android.view.View) {
-
-
+        startActivity(AppLogic.optionsActivity);
     }
 }

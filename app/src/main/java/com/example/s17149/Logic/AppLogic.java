@@ -1,5 +1,7 @@
 package com.example.s17149.Logic;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 
@@ -13,23 +15,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AppLogic {
-    //app activities & preferences
-    public static MainActivity mainActivity;
-    public static ProductListActivity productListActivity;
-    public static AddOrEditActivity addOrEditActivity;
+    //app activities & preferences -----------------------------------------------------------------
+    public static Intent mainActivity;
+    public static Intent productListActivity;
+    public static Intent addOrEditActivity;
 
-    public static OptionsActivity optionsActivity;
+    public static Intent optionsActivity;
 
     public static SharedPreferences sp;
     public static SharedPreferences.Editor spEditor;
     //=-
 
-    //app version
+    //app version ----------------------------------------------------------------------------------
     private static final String spAppVer = "AppVer";
     private static final float ver = 0.1f;
     //=-
 
-    //colors
+    //colors ---------------------------------------------------------------------------------------
     public static final String[]
             colorMC = {"colorMCr","colorMCg","colorMCb"},//mainColor
             colorTC = {"colorTCr","colorTCg","colorTCb"},//trimColor
@@ -45,10 +47,9 @@ public class AppLogic {
     public static boolean autoContrastColor = false;
     //=-
 
-    //size of text
+    //size of text ---------------------------------------------------------------------------------
     public static final String
-            textMainSize = "textMainSize";
-
+            textMainSize = "textMainSize";//mainTextSize
     public static int
             mainTextSize = 14;
     //=-
@@ -63,7 +64,7 @@ public class AppLogic {
      * --if not then create them
      *
      */
-    public static void onAppStart(){
+    public static void onAppStart(Context intent){
         //app version
         float version = sp.getFloat(spAppVer,-1);
         if(version!=ver){
@@ -148,6 +149,4 @@ public class AppLogic {
 
         return values;
     }
-
-
 }

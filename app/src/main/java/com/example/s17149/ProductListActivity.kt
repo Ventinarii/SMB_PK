@@ -15,6 +15,11 @@ class ProductListActivity : AppCompatActivity() {
         biding = ActivityProductListBinding.inflate(layoutInflater);
         setContentView(biding.root);
 
-        AppLogic.productListActivity = this;
     }
+
+    fun buAcProductListBack(view: android.view.View) {
+        startActivity(AppLogic.mainActivity);
+    }
+
+
 }

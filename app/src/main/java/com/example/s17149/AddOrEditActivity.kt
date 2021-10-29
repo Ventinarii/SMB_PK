@@ -15,6 +15,8 @@ class AddOrEditActivity : AppCompatActivity() {
         biding = ActivityAddOrEditBinding.inflate(layoutInflater);
         setContentView(biding.root);
 
-        AppLogic.addOrEditActivity = this;
     }
+
+    fun buAcDelete(view: android.view.View) {}
+    fun buAcSave(view: android.view.View) {}
 }
