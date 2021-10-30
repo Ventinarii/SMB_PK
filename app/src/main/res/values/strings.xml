@@ -27,6 +27,6 @@
     <string name="ActivityOptionsMaintextsize" translatable="false">mainTextSize</string>
     <string name="ActivityOptionsSaveButton">SAVE</string>
     <string name="ActivityOptionsAutocontrastcolor" translatable="false">autoContrastColor</string>
-    <string name="ActivityProductListSwich_modeButton">Swich Mode</string>
+    <string name="ActivityProductListSwich_modeButton">switch Mode</string>
     <string name="ActivityOptionsPolishlocaleSw">Polish langauge version</string>
 </resources>

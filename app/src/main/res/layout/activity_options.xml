@@ -9,7 +9,7 @@
     tools:context=".OptionsActivity">
 
     <TextView
-        android:id="@+id/Object_UID"
+        android:id="@+id/ActivityTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -428,6 +428,7 @@
                 android:id="@+id/aCCswitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:minHeight="48dp"
                 android:text="@string/ActivityOptionsAutocontrastcolor" />
 
@@ -454,6 +455,7 @@
                 android:id="@+id/plLocaleSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:minHeight="48dp"
                 android:text="@string/ActivityOptionsPolishlocaleSw" />
 

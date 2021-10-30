@@ -43,32 +43,32 @@ class OptionsActivity : AppCompatActivity() {
      */
     fun loadValuesFromAppLogic(){
         //colors
-        v = (AppLogic.sp.getFloat(AppLogic.colorMC[0], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMC[0], 0f) / .1f).toInt();
         biding.sK01.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorMC[1], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMC[1], 0f) / .1f).toInt();
         biding.sK02.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorMC[2], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMC[2], 0f) / .1f).toInt();
         biding.sK03.progress = clamp(v);
 
-        v = (AppLogic.sp.getFloat(AppLogic.colorTC[0], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTC[0], 0f) / .1f).toInt();
         biding.sK04.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorTC[1], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTC[1], 0f) / .1f).toInt();
         biding.sK05.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorTC[2], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTC[2], 0f) / .1f).toInt();
         biding.sK06.progress = clamp(v);
 
-        v = (AppLogic.sp.getFloat(AppLogic.colorMT[0], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMT[0], 0f) / .1f).toInt();
         biding.sK07.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorMT[1], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMT[1], 0f) / .1f).toInt();
         biding.sK08.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorMT[2], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorMT[2], 0f) / .1f).toInt();
         biding.sK09.progress = clamp(v);
 
-        v = (AppLogic.sp.getFloat(AppLogic.colorTT[0], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTT[0], 0f) / .1f).toInt();
         biding.sK10.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorTT[1], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTT[1], 0f) / .1f).toInt();
         biding.sK11.progress = clamp(v);
-        v = (AppLogic.sp.getFloat(AppLogic.colorTT[2], 0f) / 25.5f).toInt();
+        v = (AppLogic.sp.getFloat(AppLogic.colorTT[2], 0f) / .1f).toInt();
         biding.sK12.progress = clamp(v);
 
         biding.aCCswitch.isChecked = AppLogic.sp.getBoolean(AppLogic.colorACC,false);
@@ -76,7 +76,7 @@ class OptionsActivity : AppCompatActivity() {
 
         //text
         v = (AppLogic.sp.getInt(AppLogic.textMainSize, 0)).toInt();
-        v = (v-4)/2;
+        v = (v-14)/2;
         biding.textSizeSeekBar.progress = clamp(v);
 
         biding.plLocaleSwitch.isChecked = AppLogic.sp.getBoolean(AppLogic.textLocale,false);
@@ -93,21 +93,21 @@ class OptionsActivity : AppCompatActivity() {
 
         //colors
         //{
-            AppLogic.spEditor.putFloat(AppLogic.colorMC[0], biding.sK01.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorMC[1], biding.sK02.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorMC[2], biding.sK03.progress*25.5f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMC[0], biding.sK01.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMC[1], biding.sK02.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMC[2], biding.sK03.progress*.1f);
 
-            AppLogic.spEditor.putFloat(AppLogic.colorTC[0], biding.sK04.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorTC[1], biding.sK05.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorTC[2], biding.sK06.progress*25.5f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTC[0], biding.sK04.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTC[1], biding.sK05.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTC[2], biding.sK06.progress*.1f);
 
-            AppLogic.spEditor.putFloat(AppLogic.colorMT[0], biding.sK07.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorMT[1], biding.sK08.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorMT[2], biding.sK09.progress*25.5f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMT[0], biding.sK07.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMT[1], biding.sK08.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorMT[2], biding.sK09.progress*.1f);
 
-            AppLogic.spEditor.putFloat(AppLogic.colorTT[0], biding.sK10.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorTT[1], biding.sK11.progress*25.5f);
-            AppLogic.spEditor.putFloat(AppLogic.colorTT[2], biding.sK12.progress*25.5f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTT[0], biding.sK10.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTT[1], biding.sK11.progress*.1f);
+            AppLogic.spEditor.putFloat(AppLogic.colorTT[2], biding.sK12.progress*.1f);
 
             AppLogic.spEditor.putBoolean(AppLogic.colorACC, biding.aCCswitch.isChecked);
         //}
@@ -115,7 +115,7 @@ class OptionsActivity : AppCompatActivity() {
 
         //size of text
         //{
-            AppLogic.spEditor.putInt(AppLogic.textMainSize, biding.textSizeSeekBar.progress*2+4);
+            AppLogic.spEditor.putInt(AppLogic.textMainSize, biding.textSizeSeekBar.progress*2+14);
             AppLogic.spEditor.putBoolean(AppLogic.textLocale, biding.plLocaleSwitch.isChecked);
         //}
         //=-

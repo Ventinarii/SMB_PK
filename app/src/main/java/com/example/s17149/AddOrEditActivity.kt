@@ -17,6 +17,21 @@ class AddOrEditActivity : AppCompatActivity() {
 
     }
 
-    fun buAcDelete(view: android.view.View) {}
-    fun buAcSave(view: android.view.View) {}
+    fun buAcDelete(view: android.view.View) {
+
+    }
+    fun buAcSave(view: android.view.View) {
+
+    }
+
+    override fun onResume() {
+        super.onResume();
+        findAndUpdateUI();
+    }
+    fun findAndUpdateUI(){
+        biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
+        biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
+
+        biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
+    }
 }

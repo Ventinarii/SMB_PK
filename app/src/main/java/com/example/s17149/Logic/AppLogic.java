@@ -28,7 +28,7 @@ public class AppLogic {
 
     //app version ----------------------------------------------------------------------------------
     private static final String spAppVer = "AppVer";
-    private static final float ver = 0.1f;
+    private static final float ver = 0.8f;
     //=-
 
     //colors ---------------------------------------------------------------------------------------
@@ -40,10 +40,10 @@ public class AppLogic {
     public static final String
             colorACC = "colorACC";//autoContrastColor
     public static Color
-            mainColor = Color.valueOf(255,255,255),
+            mainColor = Color.valueOf(1,1,1),
             trimColor = Color.valueOf(0,0,0),
             textMainColor = Color.valueOf(0,0,0),
-            textTrimColor = Color.valueOf(255,255,255);
+            textTrimColor = Color.valueOf(1,1,1);
     public static boolean autoContrastColor = false;
     //=-
 
@@ -52,7 +52,7 @@ public class AppLogic {
             textMainSize = "textMainSize",//mainTextSize
             textLocale = "textLocale";//isPolishLocale
     public static int
-            mainTextSize = 14;
+            mainTextSize = 24;
     public static boolean
             isPolishLocale = false;
     //=-
@@ -157,3 +157,28 @@ public class AppLogic {
 
 
 }
+/*  apparently this the only way to change locale in runtime.
+    -it works.
+    -it breaks cache.
+    --don't use it.
+    ---android is dumb.
+    -to apply change then restart app and it should work. - how? WHO KNOWS. I DON'T.
+    -also- little riddle: what language code is used for default locale? does it depend on system language?
+
+    fix: also apparently it doesn't like new API. for newer version use variant with createConfigurationContext.
+    */
+    /**
+     * call this function in each activity onStart(). if you change locale and use cache (don't call onStart()) then it WON'T translate.
+     * if you open NEW activity you will end up with app in TWO or MORE languages. GOOD JOB.
+     * and no - it CAN'T be fixed
+    */
+    /*
+    public static void setLocale(Activity activity, String languageCode) {
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+        Resources resources = activity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
+ */

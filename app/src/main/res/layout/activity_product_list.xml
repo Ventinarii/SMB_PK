@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
+    android:onClick="addProduct"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/Object_UID"
+        android:id="@+id/ActivityTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -17,6 +18,7 @@
         android:textColor="#FFFFFF" />
 
     <ScrollView
+        android:id="@+id/ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -47,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="switchMode"
             android:text="@string/ActivityProductListSwich_modeButton" />
 
         <Button
@@ -56,6 +59,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
             android:layout_weight="0"
+            android:onClick="addProduct"
             android:text="@string/ActivityProductListAddButton" />
 
     </LinearLayout>
