@@ -25,6 +25,7 @@
         android:background="#FFFFFF">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>
@@ -40,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="4dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:onClick="buAcProductListBack"
             android:text="@string/ActivityBackButton" />
 
@@ -50,7 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="switchMode"
-            android:text="@string/ActivityProductListSwich_modeButton" />
+            android:text="@string/ActivityProductListSwich_modeButton"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/saveButton"
@@ -58,7 +60,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
             android:onClick="addProduct"
             android:text="@string/ActivityProductListAddButton" />
 
