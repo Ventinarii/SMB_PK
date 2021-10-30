@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 
 import com.example.s17149.AddOrEditActivity;
+import com.example.s17149.DataBase.Product;
+import com.example.s17149.DataBase.ProductViewModel;
 import com.example.s17149.MainActivity;
 import com.example.s17149.OptionsActivity;
 import com.example.s17149.ProductListActivity;
@@ -155,7 +157,10 @@ public class AppLogic {
         return values;
     }
 
+    //============================================================================================== DATA EXCHANGE
 
+    public static Product product;
+    public static ProductViewModel productViewModel;
 }
 /*  apparently this the only way to change locale in runtime.
     -it works.
