@@ -27,10 +27,11 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         biding.rv1.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
         val viewModel = ProductViewModel(this.application);
-
         AppLogic.productViewModel = viewModel;
         val adapter = ProductAdapter(viewModel,this);
         biding.rv1.adapter = adapter;
+
+
     }
     fun buAcProductListBack(view: android.view.View) {
         startActivity(AppLogic.mainActivity);
