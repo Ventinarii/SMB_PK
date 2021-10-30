@@ -10,7 +10,8 @@ class ProductViewModel(app: Application):AndroidViewModel(app) {
     public val allProducts: LiveData<List<Product>>;
 
     init{
-        val productDao = MyRoomDatabase.getDatabase(app).productDao();
+        val db = MyRoomDatabase.getDatabase(app);
+        val productDao = db.productDao()
         repo = ProductRepo(productDao);
         allProducts = repo.allProducts;
     }

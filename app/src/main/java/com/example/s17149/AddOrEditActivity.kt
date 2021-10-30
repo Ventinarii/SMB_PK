@@ -35,12 +35,12 @@ class AddOrEditActivity : AppCompatActivity() {
             AppLogic.product.qty = biding.qtyTextField.text.toString().toFloat();
             AppLogic.product.price = biding.priceTextField.text.toString().toFloat();
 
-            CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.delete(AppLogic.product) }
+            CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.update(AppLogic.product) }
             Toast.makeText(this,"edited: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
         }else{
             AppLogic.product = Product(0,biding.nameTextField.text.toString(),biding.qtyTextField.text.toString().toFloat(),biding.priceTextField.text.toString().toFloat());
 
-            CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.delete(AppLogic.product) }
+            CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.insert(AppLogic.product) }
             Toast.makeText(this,"added: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
         }
         startActivity(AppLogic.productListActivity);

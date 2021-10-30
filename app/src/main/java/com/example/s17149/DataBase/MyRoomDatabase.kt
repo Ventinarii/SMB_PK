@@ -13,7 +13,7 @@ abstract class MyRoomDatabase: RoomDatabase() {
         private var instance: MyRoomDatabase? = null
 
         fun getDatabase(context: Context): MyRoomDatabase{
-            if(MyRoomDatabase!=null)
+            if(instance!=null)
                 return instance!!
 
             instance = Room.databaseBuilder(

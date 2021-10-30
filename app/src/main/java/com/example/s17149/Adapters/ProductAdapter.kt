@@ -33,6 +33,7 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
         holder.biding.namecheckBox.text = name;
         holder.biding.qtytextView.text = qty;
         holder.biding.costtextView.text = price;
+        holder.biding.namecheckBox.isChecked = product.click;
         holder.id = product.id;
 
         holder.biding.deletebutton.setOnClickListener{
@@ -42,7 +43,18 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
         holder.biding.editbutton.setOnClickListener{
             productEditInterface.editProductOver(product);
         }
+        holder.biding.namecheckBox.setOnCheckedChangeListener { buttonView, isChecked -> kotlin.run {
+            product.click = isChecked;
+            CoroutineScope(IO).launch { productViewModel.update(product) }
+            Toast.makeText(holder.biding.root.context,"updated: "+name,Toast.LENGTH_SHORT).show();
+        }
+        }
     }
 
     override fun getItemCount(): Int = products.size;
+
+    fun setProducts(products: List<Product> ){
+        this.products = products;
+        notifyDataSetChanged();
+    }
 }

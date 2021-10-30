@@ -3,6 +3,7 @@ package com.example.s17149
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.s17149.Adapters.ProductAdapter
@@ -29,9 +30,13 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         val viewModel = ProductViewModel(this.application);
         AppLogic.productViewModel = viewModel;
         val adapter = ProductAdapter(viewModel,this);
+        viewModel.allProducts.observe(this, Observer {
+            it.let {
+                adapter.setProducts(it);
+            }
+        });
+
         biding.rv1.adapter = adapter;
-
-
     }
     fun buAcProductListBack(view: android.view.View) {
         startActivity(AppLogic.mainActivity);
@@ -39,7 +44,6 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
     override fun onResume() {
         super.onResume();
         findAndUpdateUI();
-        updateData();
         colorButton();
     }
     fun findAndUpdateUI(){
@@ -71,10 +75,6 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
             2 -> {biding.button.setBackgroundColor(Color.valueOf(1f,0f,0f).toArgb());biding.button.setTextColor(Color.valueOf(1f,1f,1f).toArgb())}
             else -> biding.button.setBackgroundColor(Color.valueOf(0f,0f,1f).toArgb());
         }
-    }
-
-    fun updateData(){
-        //unnecessary
     }
 
     fun addProduct(view: android.view.View) {

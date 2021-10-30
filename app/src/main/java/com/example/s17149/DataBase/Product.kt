@@ -9,7 +9,8 @@ data class Product(
     var id: Long = 0,
     var name: String,
     var qty: Float = 0f,
-    var price: Float = 0f
+    var price: Float = 0f,
+    var click: Boolean = false
 ) {
 
 }
