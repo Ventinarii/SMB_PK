@@ -18,4 +18,5 @@
     <string name="ActivityOptionsTitle">USTAWIENIA</string>
     <string name="ActivityOptionsSaveButton">ZAPISZ</string>
     <string name="ActivityProductListSwich_modeButton">Zmień tryb</string>
+    <string name="ActivityOptionsPolishlocaleSw">Polska wersja językowa</string>
 </resources>

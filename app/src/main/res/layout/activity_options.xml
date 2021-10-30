@@ -42,6 +42,7 @@
                     android:id="@+id/tV01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickRed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +73,7 @@
                     android:id="@+id/tV02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +104,7 @@
                     android:id="@+id/tV03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +141,7 @@
                     android:id="@+id/tV04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickRed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -168,6 +172,7 @@
                     android:id="@+id/tV05"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickGreen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -198,6 +203,7 @@
                     android:id="@+id/tV06"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -234,6 +240,7 @@
                     android:id="@+id/tV07"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickRed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -264,6 +271,7 @@
                     android:id="@+id/tV08"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickGreen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -294,6 +302,7 @@
                     android:id="@+id/tV09"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -330,6 +339,7 @@
                     android:id="@+id/tV10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickRed"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -360,6 +370,7 @@
                     android:id="@+id/tV11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickGreen"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -390,6 +401,7 @@
                     android:id="@+id/tV12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="40dp"
                     android:text="@string/ActivityOptionsColorPickBlue"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -413,20 +425,20 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Switch
-                android:id="@+id/switch1"
+                android:id="@+id/aCCswitch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:text="@string/ActivityOptionsAutocontrastcolor" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tV13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ActivityOptionsMaintextsize" />
 
             <SeekBar
-                android:id="@+id/seekBar17"
+                android:id="@+id/textSizeSeekBar"
                 style="@style/Widget.AppCompat.SeekBar.Discrete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -438,6 +450,13 @@
                 app:layout_constraintStart_toEndOf="@+id/tV01"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <Switch
+                android:id="@+id/plLocaleSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/ActivityOptionsPolishlocaleSw" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -447,7 +466,7 @@
         android:layout_weight="0">
 
         <Button
-            android:id="@+id/deleteButton"
+            android:id="@+id/backButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -465,6 +484,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
+            android:onClick="buAcOptionsSave"
             android:text="@string/ActivityOptionsSaveButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

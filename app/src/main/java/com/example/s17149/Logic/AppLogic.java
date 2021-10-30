@@ -49,9 +49,12 @@ public class AppLogic {
 
     //size of text ---------------------------------------------------------------------------------
     public static final String
-            textMainSize = "textMainSize";//mainTextSize
+            textMainSize = "textMainSize",//mainTextSize
+            textLocale = "textLocale";//isPolishLocale
     public static int
             mainTextSize = 14;
+    public static boolean
+            isPolishLocale = false;
     //=-
 
     //============================================================================================== CODE
@@ -96,6 +99,7 @@ public class AppLogic {
             //size of text
             {
                 spEditor.putInt(textMainSize,mainTextSize);
+                spEditor.putBoolean(textLocale,isPolishLocale);
             }
             //=-
 
@@ -130,7 +134,8 @@ public class AppLogic {
 
         //size of text
         {
-            sp.getInt(textMainSize,-1);
+            mainTextSize = sp.getInt(textMainSize,-1);
+            isPolishLocale = sp.getBoolean(textLocale,false);
         }
         //=-
     }
@@ -140,7 +145,7 @@ public class AppLogic {
      * @param keys array of strings that are going to be loaded
      * @return array of floats that were found. if no value is found -1 is returned
      */
-    private static float[] loadSettingsArray(String[] keys){
+    public static float[] loadSettingsArray(String[] keys){
         List<Float> list = Arrays.stream(keys).map(key->sp.getFloat(key,-1)).collect(Collectors.toList());
 
         float[] values = new float[list.size()];
@@ -149,4 +154,6 @@ public class AppLogic {
 
         return values;
     }
+
+
 }
