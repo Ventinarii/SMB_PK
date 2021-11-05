@@ -18,8 +18,10 @@ class MainActivity : AppCompatActivity() {
         biding = ActivityMainBinding.inflate(layoutInflater);
         setContentView(biding.root);
 
-        AppLogic.sp = getPreferences(MODE_PRIVATE);
-        AppLogic.spEditor = AppLogic.sp.edit();
+        if(AppLogic.sp==null){
+            AppLogic.sp = getPreferences(MODE_PRIVATE);
+            AppLogic.spEditor = AppLogic.sp.edit();
+        }
 
         AppLogic.onAppStart(this);
 
