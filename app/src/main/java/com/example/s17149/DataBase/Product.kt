@@ -10,7 +10,8 @@ data class Product(
     var name: String,
     var qty: Float = 0f,
     var price: Float = 0f,
-    var click: Boolean = false
+    var click: Boolean = false,
+    var UID: Long = 0
 ) {
 
 }

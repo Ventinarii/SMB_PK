@@ -161,6 +161,14 @@ public class AppLogic {
 
     public static Product product;
     public static ProductViewModel productViewModel;
+
+    public static void test(){
+
+
+    }
+
+
+
 }
 /*  apparently this the only way to change locale in runtime.
     -it works.

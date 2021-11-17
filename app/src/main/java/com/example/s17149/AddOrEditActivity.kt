@@ -1,5 +1,7 @@
 package com.example.s17149
 
+import android.content.ComponentName
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -38,10 +40,19 @@ class AddOrEditActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.update(AppLogic.product) }
             Toast.makeText(this,"edited: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
         }else{
-            AppLogic.product = Product(0,biding.nameTextField.text.toString(),biding.qtyTextField.text.toString().toFloat(),biding.priceTextField.text.toString().toFloat());
+            AppLogic.product = Product(
+                0,
+                biding.nameTextField.text.toString(),
+                biding.qtyTextField.text.toString().toFloat(),
+                biding.priceTextField.text.toString().toFloat(),
+                false,
+                createUID()
+            );
 
             CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.insert(AppLogic.product) }
             Toast.makeText(this,"added: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
+
+            eventDispatcher();
         }
         startActivity(AppLogic.productListActivity);
     }
@@ -65,5 +76,37 @@ class AddOrEditActivity : AppCompatActivity() {
         biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
 
         biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
+    }
+    fun createUID(): Long{
+        var uids = AppLogic.productViewModel
+            .allProducts
+            .value!!
+            .stream()
+            .map { v -> v.UID }
+            .sorted()
+            .mapToLong { v -> v }
+            .toArray();
+        var x = uids.size-1;
+        for (i in 0..x)
+            if (i < uids[i])
+                return uids[i];
+        return 0;
+    }
+    fun eventDispatcher() {
+        sendBroadcast(Intent().
+        also {
+            it.component = ComponentName("com.example.s17149fk","com.example.s17149fk.MyReceiver");
+            it.putExtra("UID", AppLogic.product.UID);
+        });
+    }
+    fun loadProduct(UID: Long){
+        var product = AppLogic.productViewModel
+            .allProducts
+            .value!!
+            .stream()
+            .filter { v -> v.UID == UID }
+            .findFirst()!!;
+
+        onResume();
     }
 }
