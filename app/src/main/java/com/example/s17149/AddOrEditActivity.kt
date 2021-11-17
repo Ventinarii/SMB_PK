@@ -61,6 +61,9 @@ class AddOrEditActivity : AppCompatActivity() {
         super.onResume();
         findAndUpdateUI();
 
+        if(intent.hasExtra("UID"))
+            loadProduct(intent.getLongExtra("UID",-1))
+
         if(AppLogic.product!=null){
             biding.nameTextField.setText(AppLogic.product.name);
             biding.qtyTextField.setText(AppLogic.product.qty.toString());
@@ -98,14 +101,6 @@ class AddOrEditActivity : AppCompatActivity() {
     }
 
     fun eventDispatcher() {
-        val pendingIntent = PendingIntent.getActivity(
-            this,
-            1,
-            Intent(this,AddOrEditActivity::class.java),
-            PendingIntent.FLAG_ONE_SHOT
-        );
-
-
         sendBroadcast(Intent().
         also {
             it.component = ComponentName("com.example.s17149fk","com.example.s17149fk.MyReceiver");
@@ -120,13 +115,12 @@ class AddOrEditActivity : AppCompatActivity() {
      * @param UID unique id (UID) of item to be edited. it is NOT primary key (Id).
      */
     fun loadProduct(UID: Long){
-        var product = AppLogic.productViewModel
+        if(0<=UID)
+        AppLogic.product = AppLogic.productViewModel
             .allProducts
             .value!!
             .stream()
             .filter { v -> v.UID == UID }
-            .findFirst()!!;
-
-        onResume();
+            .findFirst().get();
     }
 }
