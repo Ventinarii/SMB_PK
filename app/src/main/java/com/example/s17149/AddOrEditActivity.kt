@@ -61,6 +61,7 @@ class AddOrEditActivity : AppCompatActivity() {
         super.onResume();
         findAndUpdateUI();
 
+
         if(intent.hasExtra("UID"))
             loadProduct(intent.getLongExtra("UID",-1))
 
