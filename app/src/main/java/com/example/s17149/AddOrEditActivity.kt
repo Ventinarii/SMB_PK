@@ -1,5 +1,6 @@
 package com.example.s17149
 
+import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -50,8 +51,7 @@ class AddOrEditActivity : AppCompatActivity() {
             );
 
             CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.insert(AppLogic.product) }
-            Toast.makeText(this,"added: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
-
+            //Toast.makeText(this,"added: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
             eventDispatcher();
         }
         startActivity(AppLogic.productListActivity);
@@ -77,6 +77,10 @@ class AddOrEditActivity : AppCompatActivity() {
 
         biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
     }
+
+    /**UIDs are natural numbers.
+     * @return returns first free UID of product.
+     */
     fun createUID(): Long{
         var uids = AppLogic.productViewModel
             .allProducts
@@ -90,15 +94,31 @@ class AddOrEditActivity : AppCompatActivity() {
         for (i in 0..x)
             if (i < uids[i])
                 return uids[i];
-        return 0;
+        return uids.size.toLong();
     }
+
     fun eventDispatcher() {
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            1,
+            Intent(this,AddOrEditActivity::class.java),
+            PendingIntent.FLAG_ONE_SHOT
+        );
+
+
         sendBroadcast(Intent().
         also {
             it.component = ComponentName("com.example.s17149fk","com.example.s17149fk.MyReceiver");
             it.putExtra("UID", AppLogic.product.UID);
         });
+        Toast.makeText(this,"sent!",Toast.LENGTH_LONG);
     }
+
+    /**Call this fun after arrivel from other app.
+     * It will load all the data of item and show it for edition.
+     *
+     * @param UID unique id (UID) of item to be edited. it is NOT primary key (Id).
+     */
     fun loadProduct(UID: Long){
         var product = AppLogic.productViewModel
             .allProducts
