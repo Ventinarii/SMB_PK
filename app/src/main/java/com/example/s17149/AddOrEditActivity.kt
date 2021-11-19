@@ -102,11 +102,16 @@ class AddOrEditActivity : AppCompatActivity() {
     }
 
     fun eventDispatcher() {
-        sendBroadcast(Intent().
-        also {
-            it.component = ComponentName("com.example.s17149fk","com.example.s17149fk.MyReceiver");
-            it.putExtra("UID", AppLogic.product.UID);
-        });
+        var per = "com.example.s17149.PK2_1"//Manifest.permission.PK2_1
+        sendBroadcast(
+        //sendOrderedBroadcast(
+            Intent().
+            also {
+                it.component = ComponentName("com.example.s17149fk","com.example.s17149fk.MyReceiver");
+                it.putExtra("UID", AppLogic.product.UID);
+            }
+        //    ,per
+        );
         Toast.makeText(this,"sent!",Toast.LENGTH_LONG);
     }
 
