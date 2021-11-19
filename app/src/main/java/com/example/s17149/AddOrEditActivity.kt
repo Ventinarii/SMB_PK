@@ -13,6 +13,7 @@ import com.example.s17149.databinding.ActivityOptionsBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.jar.Manifest
 
 class AddOrEditActivity : AppCompatActivity() {
 
@@ -75,6 +76,7 @@ class AddOrEditActivity : AppCompatActivity() {
             biding.priceTextField.setText("");
         }
     }
+
     fun findAndUpdateUI(){
         biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
         biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
@@ -102,7 +104,7 @@ class AddOrEditActivity : AppCompatActivity() {
     }
 
     fun eventDispatcher() {
-        var per = "com.example.s17149.PK2_1"//Manifest.permission.PK2_1
+        var per = "com.example.s17149.PK2_1"
         sendBroadcast(
         //sendOrderedBroadcast(
             Intent().

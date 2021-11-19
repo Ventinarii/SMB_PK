@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.s17149">
 
-    <!--permission android:name="com.example.s17149.PK2_1"/-->
+
 
 
     <application

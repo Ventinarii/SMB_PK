@@ -55,4 +55,6 @@ class MainActivity : AppCompatActivity() {
         biding.ProductListButton.setTextSize(TypedValue.COMPLEX_UNIT_PX,AppLogic.mainTextSize.toFloat());
         biding.SettingsButton.setTextSize(TypedValue.COMPLEX_UNIT_PX,AppLogic.mainTextSize.toFloat());
     }
+
+
 }
