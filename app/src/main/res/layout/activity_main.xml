@@ -38,8 +38,39 @@
                 android:id="@+id/SettingsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="buAcXSettings"
+                android:enabled="false"
                 android:text="@string/ActivityMainXSettings" />
+
+            <EditText
+                android:id="@+id/UserNameTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="product name"
+                android:ems="10"
+                android:hint="@string/ActivityMainUser_name"
+                android:inputType="text"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                tools:text="SomePassword" />
+
+            <Button
+                android:id="@+id/loginOrRegisterButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ActivityMainLogin_or_register" />
+
+            <TextView
+                android:id="@+id/UserIdTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ActivityMainUserIdTextview" />
 
         </LinearLayout>
     </ScrollView>

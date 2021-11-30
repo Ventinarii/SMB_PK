@@ -29,4 +29,8 @@
     <string name="ActivityOptionsAutocontrastcolor" translatable="false">autoContrastColor</string>
     <string name="ActivityProductListSwich_modeButton">switch Mode</string>
     <string name="ActivityOptionsPolishlocaleSw">Polish langauge version</string>
+    <string name="ActivityAddOrDeletePublicSwich" translatable="false">Public</string>
+    <string name="ActivityMainUser_name" translatable="false">User Name</string>
+    <string name="ActivityMainLogin_or_register" translatable="false">Login Or Register</string>
+    <string name="ActivityMainUserIdTextview" translatable="false">TextView</string>
 </resources>

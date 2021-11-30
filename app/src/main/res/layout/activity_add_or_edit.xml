@@ -58,6 +58,12 @@
                 android:hint="@string/ActivityAddOrEditObjectPriceHint"
                 android:inputType="numberSigned"
                 android:minHeight="48dp" />
+
+            <Switch
+                android:id="@+id/publicSwich"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ActivityAddOrDeletePublicSwich" />
         </LinearLayout>
     </ScrollView>
 

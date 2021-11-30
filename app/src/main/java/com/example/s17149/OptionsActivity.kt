@@ -6,7 +6,7 @@ import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
 import com.example.s17149.databinding.ActivityOptionsBinding
 
-/**abandoned*/
+@Deprecated("No longer supported")
 class OptionsActivity : AppCompatActivity() {
 
     private lateinit var biding: ActivityOptionsBinding;
@@ -43,6 +43,7 @@ class OptionsActivity : AppCompatActivity() {
      * it is expensive.
      */
     fun loadValuesFromAppLogic(){
+        /*
         //colors
         v = (AppLogic.sp.getFloat(AppLogic.colorMC[0], 0f) / .1f).toInt();
         biding.sK01.progress = clamp(v);
@@ -82,6 +83,7 @@ class OptionsActivity : AppCompatActivity() {
 
         biding.plLocaleSwitch.isChecked = AppLogic.sp.getBoolean(AppLogic.textLocale,false);
         //=-
+         */
     }
 
     /**
@@ -90,6 +92,7 @@ class OptionsActivity : AppCompatActivity() {
      * it MAY cause problems. direct reference to sp and spEditor should be restricted to AppLogic and OptionsActivity -=ONLY=-.
      */
     fun buAcOptionsSave(view: android.view.View) {
+        /*
         //=-
 
         //colors
@@ -126,6 +129,7 @@ class OptionsActivity : AppCompatActivity() {
         AppLogic.reLoadSettings();
 
         loadValuesFromAppLogic();
+         */
     }
 
 }

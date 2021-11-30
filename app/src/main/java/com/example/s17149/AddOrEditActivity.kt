@@ -24,7 +24,7 @@ class AddOrEditActivity : AppCompatActivity() {
         if(AppLogic.product!=null){
             val name = AppLogic.product.Name;
             CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.delete(AppLogic.product) }
-            Toast.makeText(this,"deleted: "+name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "deleted: $name", Toast.LENGTH_SHORT).show();
         }
         startActivity(AppLogic.productListActivity);
     }
@@ -38,29 +38,23 @@ class AddOrEditActivity : AppCompatActivity() {
             Toast.makeText(this,"edited: "+AppLogic.product.Name, Toast.LENGTH_SHORT).show();
         }else{
             AppLogic.product = Product(
-                0,
-                biding.nameTextField.text.toString(),
-                biding.qtyTextField.text.toString().toFloat(),
-                biding.priceTextField.text.toString().toFloat(),
-                false,
-                createUID()
+                Id =0,
+                UserId = AppLogic.UserId,
+                Public = AppLogic.UserIsPublishing,
+                Name = biding.nameTextField.text.toString(),
+                Qty = biding.qtyTextField.text.toString().toFloat(),
+                Price = biding.priceTextField.text.toString().toFloat(),
+                Click = false
             );
 
             CoroutineScope(Dispatchers.IO).launch { AppLogic.productViewModel.insert(AppLogic.product) }
-            //Toast.makeText(this,"added: "+AppLogic.product.name, Toast.LENGTH_SHORT).show();
-            eventDispatcher();
+            Toast.makeText(this,"added: "+AppLogic.product.Name, Toast.LENGTH_SHORT).show();
         }
         startActivity(AppLogic.productListActivity);
     }
 
     override fun onResume() {
         super.onResume();
-        findAndUpdateUI();
-
-
-        if(intent.hasExtra("UID"))
-            loadProduct(intent.getLongExtra("UID",-1))
-
         if(AppLogic.product!=null){
             biding.nameTextField.setText(AppLogic.product.Name);
             biding.qtyTextField.setText(AppLogic.product.Qty.toString());

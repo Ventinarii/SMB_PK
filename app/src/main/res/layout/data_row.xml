@@ -46,14 +46,25 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
         android:text="@string/UiListRowNameNoValue"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namecheckBox"
-        app:layout_constraintVertical_bias="0.0"
         tools:text="@string/UiListRowQtyNoValue" />
+
+    <TextView
+        android:id="@+id/PublicTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costtextView"
+        tools:text="false" />
 
     <TextView
         android:id="@+id/costtextView"
@@ -62,11 +73,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
         android:text="@string/UiListRowNameNoValue"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/qtytextView"
         app:layout_constraintTop_toBottomOf="@+id/editbutton"
         tools:text="@string/UiListRowCostNoValue" />
+
+    <TextView
+        android:id="@+id/UidOfOwnerTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/qtytextView"
+        app:layout_constraintTop_toBottomOf="@+id/qtytextView"
+        tools:text="-1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
