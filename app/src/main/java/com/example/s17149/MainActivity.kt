@@ -36,26 +36,5 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume();
-        findAndUpdateUI();
     }
-    //==============================================================================================abandoned
-    /**abandoned*/
-    fun buAcXSettings(view: android.view.View) {
-        //startActivity(AppLogic.optionsActivity);
-    }
-    /**abandoned*/
-    fun findAndUpdateUI(){
-        //biding.titleTextView.setTextColor(AppLogic.textTrimColor.toArgb());
-        //biding.titleTextView.setBackgroundColor(AppLogic.trimColor.toArgb());
-
-        //biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
-
-        //biding.ProductListButton.setTextColor(AppLogic.textMainColor.toArgb());
-        //biding.SettingsButton.setTextColor(AppLogic.textMainColor.toArgb());
-
-        //biding.ProductListButton.setTextSize(TypedValue.COMPLEX_UNIT_PX,AppLogic.mainTextSize.toFloat());
-        //biding.SettingsButton.setTextSize(TypedValue.COMPLEX_UNIT_PX,AppLogic.mainTextSize.toFloat());
-    }
-
-
 }

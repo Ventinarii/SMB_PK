@@ -26,15 +26,15 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position];
-        val name = product.name;
-        val qty = product.qty.toString();
-        val price = product.price.toString() + "PLN/qty"
+        val name = product.Name;
+        val qty = product.Qty.toString();
+        val price = product.Price.toString() + "PLN/qty"
 
         holder.biding.namecheckBox.text = name;
         holder.biding.qtytextView.text = qty;
         holder.biding.costtextView.text = price;
-        holder.biding.namecheckBox.isChecked = product.click;
-        holder.id = product.id;
+        holder.biding.namecheckBox.isChecked = product.Click;
+        holder.id = product.Id;
 
         holder.biding.deletebutton.setOnClickListener{
             CoroutineScope(IO).launch { productViewModel.delete(product) }
@@ -44,7 +44,7 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
             productEditInterface.editProductOver(product);
         }
         holder.biding.namecheckBox.setOnCheckedChangeListener { buttonView, isChecked -> kotlin.run {
-            product.click = isChecked;
+            product.Click = isChecked;
             CoroutineScope(IO).launch { productViewModel.update(product) }
             Toast.makeText(holder.biding.root.context,"updated: "+name,Toast.LENGTH_SHORT).show();
         }

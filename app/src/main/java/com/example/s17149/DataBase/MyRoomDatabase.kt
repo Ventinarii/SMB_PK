@@ -5,6 +5,7 @@ import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteOpenHelper
 
 @Database(entities = [Product::class], version = 1)
+@Deprecated("swich to firebase")
 abstract class MyRoomDatabase: RoomDatabase() {
 
     abstract fun productDao():ProductDao

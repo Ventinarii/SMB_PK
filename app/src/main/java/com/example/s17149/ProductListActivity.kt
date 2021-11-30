@@ -43,7 +43,6 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
     }
     override fun onResume() {
         super.onResume();
-        findAndUpdateUI();
         colorButton();
     }
     //============================================================================================== CODE
@@ -76,13 +75,5 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
     override fun editProductOver(product: Product) {
         AppLogic.product = product;
         startActivity(AppLogic.addOrEditActivity);
-    }
-    //==============================================================================================abandoned
-    /**abandoned*/
-    fun findAndUpdateUI(){
-        //biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
-        //biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
-
-        //biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
     }
 }
