@@ -11,7 +11,8 @@ data class Product(
     var qty: Float = 0f,
     var price: Float = 0f,
     var click: Boolean = false,
-    var UID: Long = 0
+    var UserId: Long = 0,
+    var Public: Boolean = false
 ) {
 
 }

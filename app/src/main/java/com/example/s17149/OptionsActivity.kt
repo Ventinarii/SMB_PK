@@ -6,6 +6,7 @@ import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
 import com.example.s17149.databinding.ActivityOptionsBinding
 
+/**abandoned*/
 class OptionsActivity : AppCompatActivity() {
 
     private lateinit var biding: ActivityOptionsBinding;

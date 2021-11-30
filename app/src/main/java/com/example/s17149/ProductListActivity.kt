@@ -11,13 +11,11 @@ import com.example.s17149.Adapters.ProductEditInterface
 import com.example.s17149.DataBase.Product
 import com.example.s17149.DataBase.ProductViewModel
 import com.example.s17149.Logic.AppLogic
-import com.example.s17149.databinding.ActivityOptionsBinding
 import com.example.s17149.databinding.ActivityProductListBinding
 
 class ProductListActivity : AppCompatActivity(), ProductEditInterface{
 
     private lateinit var biding: ActivityProductListBinding;
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -38,6 +36,8 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
 
         biding.rv1.adapter = adapter;
     }
+
+
     fun buAcProductListBack(view: android.view.View) {
         startActivity(AppLogic.mainActivity);
     }
@@ -46,15 +46,7 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         findAndUpdateUI();
         colorButton();
     }
-    fun findAndUpdateUI(){
-        biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
-        biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
-
-        biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
-    }
-
     //============================================================================================== CODE
-
     private var mode = 0;
     //0 - check toggle mode - green
     //1 - edit mode - yellow
@@ -85,5 +77,12 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         AppLogic.product = product;
         startActivity(AppLogic.addOrEditActivity);
     }
+    //==============================================================================================abandoned
+    /**abandoned*/
+    fun findAndUpdateUI(){
+        //biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
+        //biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
 
+        //biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
+    }
 }

@@ -77,17 +77,21 @@ class AddOrEditActivity : AppCompatActivity() {
         }
     }
 
+
+    //==============================================================================================abandoned
+    /**abandoned*/
     fun findAndUpdateUI(){
-        biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
-        biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
+        //biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
+        //biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
 
-        biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
+        //biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
     }
-
-    /**UIDs are natural numbers.
+    /**abandoned
+     * UIDs are natural numbers.
      * @return returns first free UID of product.
      */
     fun createUID(): Long{
+        /*
         var uids = AppLogic.productViewModel
             .allProducts
             .value!!
@@ -100,10 +104,12 @@ class AddOrEditActivity : AppCompatActivity() {
         for (i in 0..x)
             if (i < uids[i])
                 return uids[i];
-        return uids.size.toLong();
+         */
+        return -1//uids.size.toLong();
     }
-
+    /**abandoned*/
     fun eventDispatcher() {
+        /*
         var per = "com.example.s17149.PK2_1"
         sendBroadcast(
         //sendOrderedBroadcast(
@@ -115,14 +121,16 @@ class AddOrEditActivity : AppCompatActivity() {
         //    ,per
         );
         Toast.makeText(this,"sent!",Toast.LENGTH_LONG);
+         */
     }
-
-    /**Call this fun after arrivel from other app.
+    /**abandoned
+     * Call this fun after arrivel from other app.
      * It will load all the data of item and show it for edition.
      *
      * @param UID unique id (UID) of item to be edited. it is NOT primary key (Id).
      */
     fun loadProduct(UID: Long){
+        /*
         if(0<=UID)
         AppLogic.product = AppLogic.productViewModel
             .allProducts
@@ -130,5 +138,6 @@ class AddOrEditActivity : AppCompatActivity() {
             .stream()
             .filter { v -> v.UID == UID }
             .findFirst().get();
+         */
     }
 }
