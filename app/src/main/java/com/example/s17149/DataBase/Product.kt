@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Product(
     @PrimaryKey(autoGenerate = true)
     var Id: Int = 0,
-    var UserId: Int = 0,
+    var UserId: String = "",
     var Public: Boolean = false,
 
     var Name: String,

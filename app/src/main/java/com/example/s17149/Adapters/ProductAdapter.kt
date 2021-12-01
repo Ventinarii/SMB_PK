@@ -43,7 +43,7 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
         holder.biding.PublicTextView.setText(if (product.Public) "Public" else "Private");
         holder.biding.UidOfOwnerTextView.setText("Owner has ID: ${product.UserId}");
 
-        if(AppLogic.UserId!=product.UserId){
+        if(!AppLogic.fUser.uid.equals(product.UserId)){
             holder.biding.deletebutton.isEnabled=false;
             holder.biding.editbutton.isEnabled=false;
             if(!product.Public)

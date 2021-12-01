@@ -9,13 +9,13 @@ import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-
-
+import com.google.firebase.database.FirebaseDatabase
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var biding: ActivityMainBinding;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -32,16 +32,33 @@ class MainActivity : AppCompatActivity() {
         //AppLogic.optionsActivity = Intent(this,OptionsActivity::class.java);
 
         AppLogic.fAuth = FirebaseAuth.getInstance();
+        AppLogic.fDatabase = FirebaseDatabase.getInstance();
         val currentUser: FirebaseUser? = AppLogic.fAuth.getCurrentUser();
-        if(currentUser!=null)
+        if(currentUser!=null){
             UpdateForUser(currentUser!!);
+        }else{
+            UpdateForUser(null)
+        }
     }
+
+    /**
+     * this buttons start product list activity - works only if we have logged in
+     */
     fun buAc01ProductList(view: android.view.View) {
         startActivity(AppLogic.productListActivity);
     }
+
+    /**
+     * currently abandoned
+     */
     override fun onResume() {
         super.onResume();
+        UpdateForUser(null);
     }
+
+    /**
+     * this button calls login function in AppLogic.
+     */
     fun LoginButton(view: android.view.View) {
         //1-change password;2-login;3-register
         AppLogic.login(biding,this);
@@ -49,6 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * this function updates the values (text) of email and status text fields in UI
+     * and toggles product list button
      * @param user user that is logged in. (or null if no user is logged in)
      */
     fun UpdateForUser(user:FirebaseUser?){
@@ -56,11 +74,12 @@ class MainActivity : AppCompatActivity() {
             biding.UserNameTextField.setText(user.email);
             biding.editTextTextPassword.setText("");
             biding.UserIdTextView.setText("Logged in as User ${user.email} with uid: ${user.uid}");
+            biding.ProductListButton.isEnabled=true;
         }else{
             biding.UserNameTextField.setText("");
             biding.editTextTextPassword.setText("");
             biding.UserIdTextView.setText("Not logged in");
+            biding.ProductListButton.isEnabled=false;
         }
-
     }
 }

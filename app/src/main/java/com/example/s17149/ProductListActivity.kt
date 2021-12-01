@@ -28,7 +28,7 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         val viewModel = ProductViewModel(this.application);
         AppLogic.productViewModel = viewModel;
         val adapter = ProductAdapter(viewModel,this);
-        viewModel.allProducts.observe(this, Observer {
+        viewModel.getProducts().observe(this, Observer {
             it.let {
                 adapter.setProducts(it);
             }
@@ -37,41 +37,34 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         biding.rv1.adapter = adapter;
     }
 
-
+    /**
+     * this button returns us to main activity
+     */
     fun buAcProductListBack(view: android.view.View) {
         startActivity(AppLogic.mainActivity);
     }
+    /**
+     * currently abandoned
+     */
     override fun onResume() {
         super.onResume();
-        colorButton();
+        AppLogic.getAllVisibleProducts();
     }
     //============================================================================================== CODE
-    private var mode = 0;
-    //0 - check toggle mode - green
-    //1 - edit mode - yellow
-    //2 - delete mode - red
-    fun switchMode(view: android.view.View) {
-        when(mode){
-            0 -> mode = 1;
-            1 -> mode = 2;
-            2 -> mode = 0;
-            else -> mode = 0;
-        }
-        colorButton();
-    }
-    fun colorButton(){
-        when(mode){
-            0 -> {biding.button.setBackgroundColor(Color.valueOf(0f,1f,0f).toArgb());biding.button.setTextColor(Color.valueOf(1f,1f,1f).toArgb())}
-            1 -> {biding.button.setBackgroundColor(Color.valueOf(1f,1f,0f).toArgb());biding.button.setTextColor(Color.valueOf(0f,0f,0f).toArgb())}
-            2 -> {biding.button.setBackgroundColor(Color.valueOf(1f,0f,0f).toArgb());biding.button.setTextColor(Color.valueOf(1f,1f,1f).toArgb())}
-            else -> biding.button.setBackgroundColor(Color.valueOf(0f,0f,1f).toArgb());
-        }
-    }
-
+    /**
+     * this button is responsible for adding product - it redirects us to AddOrEditActivity with AppLogic param
+     * AppLogic.product == null
+     */
     fun addProduct(view: android.view.View) {
         AppLogic.product = null;
         startActivity(AppLogic.addOrEditActivity);
     }
+
+    /**
+     * this function is part of interface ProductEditInterface and is responsible for receiving events coming from items in container
+     * in this case the only function is to 'edit' otherwise define Enum and call function with it as additional argument (more functions  == mess)
+     * @param product logical object associated with data_row that called event
+     */
     override fun editProductOver(product: Product) {
         AppLogic.product = product;
         startActivity(AppLogic.addOrEditActivity);
