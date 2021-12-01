@@ -30,7 +30,7 @@
     <string name="ActivityProductListSwich_modeButton">switch Mode</string>
     <string name="ActivityOptionsPolishlocaleSw">Polish langauge version</string>
     <string name="ActivityAddOrDeletePublicSwich" translatable="false">Public</string>
-    <string name="ActivityMainUser_name" translatable="false">User Name</string>
-    <string name="ActivityMainLogin_or_register" translatable="false">Login Or Register</string>
+    <string name="ActivityMainUser_name" translatable="false">User Email</string>
+    <string name="ActivityMainLogin_or_register" translatable="false">Login Or Register Or Update Password</string>
     <string name="ActivityMainUserIdTextview" translatable="false">TextView</string>
 </resources>

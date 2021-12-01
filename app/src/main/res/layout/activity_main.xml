@@ -64,6 +64,7 @@
                 android:id="@+id/loginOrRegisterButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="LoginButton"
                 android:text="@string/ActivityMainLogin_or_register" />
 
             <TextView
