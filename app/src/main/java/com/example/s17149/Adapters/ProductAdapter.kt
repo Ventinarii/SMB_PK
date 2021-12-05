@@ -55,6 +55,7 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
         holder.biding.deletebutton.setOnClickListener{
             CoroutineScope(IO).launch { productViewModel.delete(product) }
             Toast.makeText(holder.biding.root.context,"deleted: "+name,Toast.LENGTH_SHORT).show();
+            notifyDataSetChanged();
         }
         holder.biding.editbutton.setOnClickListener{
             productEditInterface.editProductOver(product);
