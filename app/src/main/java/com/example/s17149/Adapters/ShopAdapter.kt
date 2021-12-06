@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.s17149.DataBase.Product
-import com.example.s17149.DataBase.ProductViewModel
+import com.example.s17149.DataBase.Shop
+import com.example.s17149.DataBase.ShopViewModel
 import com.example.s17149.databinding.DataRowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class ProductAdapter(private val productViewModel: ProductViewModel, private val productEditInterface: ProductEditInterface): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEditInterface: ShopEditInterface): RecyclerView.Adapter<ShopAdapter.ProductViewHolder>() {
 
-    private var products = emptyList<Product>()
+    private var products = emptyList<Shop>()
 
     class ProductViewHolder(val biding: DataRowBinding):RecyclerView.ViewHolder(biding.root){
         public var id: Long = 0;
@@ -37,15 +37,15 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
         holder.id = product.id;
 
         holder.biding.deletebutton.setOnClickListener{
-            CoroutineScope(IO).launch { productViewModel.delete(product) }
+            CoroutineScope(IO).launch { shopViewModel.delete(product) }
             Toast.makeText(holder.biding.root.context,"deleted: "+name,Toast.LENGTH_SHORT).show();
         }
         holder.biding.editbutton.setOnClickListener{
-            productEditInterface.editProductOver(product);
+            shopEditInterface.editProductOver(product);
         }
         holder.biding.namecheckBox.setOnCheckedChangeListener { buttonView, isChecked -> kotlin.run {
             product.click = isChecked;
-            CoroutineScope(IO).launch { productViewModel.update(product) }
+            CoroutineScope(IO).launch { shopViewModel.update(product) }
             Toast.makeText(holder.biding.root.context,"updated: "+name,Toast.LENGTH_SHORT).show();
         }
         }
@@ -53,8 +53,8 @@ class ProductAdapter(private val productViewModel: ProductViewModel, private val
 
     override fun getItemCount(): Int = products.size;
 
-    fun setProducts(products: List<Product> ){
-        this.products = products;
+    fun setProducts(shops: List<Shop> ){
+        this.products = shops;
         notifyDataSetChanged();
     }
 }

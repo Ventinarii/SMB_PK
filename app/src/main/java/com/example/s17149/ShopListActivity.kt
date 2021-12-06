@@ -6,14 +6,14 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.s17149.Adapters.ProductAdapter
-import com.example.s17149.Adapters.ProductEditInterface
-import com.example.s17149.DataBase.Product
-import com.example.s17149.DataBase.ProductViewModel
+import com.example.s17149.Adapters.ShopAdapter
+import com.example.s17149.Adapters.ShopEditInterface
+import com.example.s17149.DataBase.Shop
+import com.example.s17149.DataBase.ShopViewModel
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityProductListBinding
 
-class ProductListActivity : AppCompatActivity(), ProductEditInterface{
+class ShopListActivity : AppCompatActivity(), ShopEditInterface{
 
     private lateinit var biding: ActivityProductListBinding;
 
@@ -25,9 +25,9 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
         biding.rv1.layoutManager = LinearLayoutManager(this);
         biding.rv1.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        val viewModel = ProductViewModel(this.application);
-        AppLogic.productViewModel = viewModel;
-        val adapter = ProductAdapter(viewModel,this);
+        val viewModel = ShopViewModel(this.application);
+        AppLogic.shopViewModel = viewModel;
+        val adapter = ShopAdapter(viewModel,this);
         viewModel.allProducts.observe(this, Observer {
             it.let {
                 adapter.setProducts(it);
@@ -43,7 +43,6 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
     }
     override fun onResume() {
         super.onResume();
-        findAndUpdateUI();
         colorButton();
     }
     //============================================================================================== CODE
@@ -70,19 +69,11 @@ class ProductListActivity : AppCompatActivity(), ProductEditInterface{
     }
 
     fun addProduct(view: android.view.View) {
-        AppLogic.product = null;
+        AppLogic.shop = null;
         startActivity(AppLogic.addOrEditActivity);
     }
-    override fun editProductOver(product: Product) {
-        AppLogic.product = product;
+    override fun editProductOver(shop: Shop) {
+        AppLogic.shop = shop;
         startActivity(AppLogic.addOrEditActivity);
-    }
-    //==============================================================================================abandoned
-    /**abandoned*/
-    fun findAndUpdateUI(){
-        //biding.ActivityTitle.setTextColor(AppLogic.textTrimColor.toArgb());
-        //biding.ActivityTitle.setBackgroundColor(AppLogic.trimColor.toArgb());
-
-        //biding.ScrollView.setBackgroundColor(AppLogic.mainColor.toArgb());
     }
 }

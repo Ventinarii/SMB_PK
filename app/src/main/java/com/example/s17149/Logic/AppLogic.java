@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 
-import com.example.s17149.AddOrEditActivity;
-import com.example.s17149.DataBase.Product;
-import com.example.s17149.DataBase.ProductViewModel;
-import com.example.s17149.MainActivity;
-import com.example.s17149.OptionsActivity;
-import com.example.s17149.ProductListActivity;
+import com.example.s17149.DataBase.Shop;
+import com.example.s17149.DataBase.ShopViewModel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,12 +23,10 @@ public class AppLogic {
     public static SharedPreferences sp;
     public static SharedPreferences.Editor spEditor;
     //=-
-
     //app version ----------------------------------------------------------------------------------
     private static final String spAppVer = "AppVer";
     private static final float ver = 0.8f;
     //=-
-
     //colors ---------------------------------------------------------------------------------------
     public static final String[]
             colorMC = {"colorMCr","colorMCg","colorMCb"},//mainColor
@@ -48,7 +42,6 @@ public class AppLogic {
             textTrimColor = Color.valueOf(1,1,1);
     public static boolean autoContrastColor = false;
     //=-
-
     //size of text ---------------------------------------------------------------------------------
     public static final String
             textMainSize = "textMainSize",//mainTextSize
@@ -58,9 +51,7 @@ public class AppLogic {
     public static boolean
             isPolishLocale = false;
     //=-
-
     //============================================================================================== CODE
-
     /**
      * This function is responsible for creating default preferences on app first start or ver change
      *
@@ -141,7 +132,6 @@ public class AppLogic {
         }
         //=-
     }
-
     /**
      * this function loads arrays of vales from shared preferences
      * @param keys array of strings that are going to be loaded
@@ -156,42 +146,7 @@ public class AppLogic {
 
         return values;
     }
-
     //============================================================================================== DATA EXCHANGE
-
-    public static Product product;
-    public static ProductViewModel productViewModel;
-
-    public static void test(){
-
-
-    }
-
-
-
+    public static Shop shop;
+    public static ShopViewModel shopViewModel;
 }
-/*  apparently this the only way to change locale in runtime.
-    -it works.
-    -it breaks cache.
-    --don't use it.
-    ---android is dumb.
-    -to apply change then restart app and it should work. - how? WHO KNOWS. I DON'T.
-    -also- little riddle: what language code is used for default locale? does it depend on system language?
-
-    fix: also apparently it doesn't like new API. for newer version use variant with createConfigurationContext.
-    */
-    /**
-     * call this function in each activity onStart(). if you change locale and use cache (don't call onStart()) then it WON'T translate.
-     * if you open NEW activity you will end up with app in TWO or MORE languages. GOOD JOB.
-     * and no - it CAN'T be fixed
-    */
-    /*
-    public static void setLocale(Activity activity, String languageCode) {
-        Locale locale = new Locale(languageCode);
-        Locale.setDefault(locale);
-        Resources resources = activity.getResources();
-        Configuration config = resources.getConfiguration();
-        config.setLocale(locale);
-        resources.updateConfiguration(config, resources.getDisplayMetrics());
-    }
- */

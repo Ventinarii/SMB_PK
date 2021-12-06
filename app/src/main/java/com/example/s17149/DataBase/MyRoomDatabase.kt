@@ -2,12 +2,11 @@ package com.example.s17149.DataBase
 
 import android.content.Context
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteOpenHelper
 
-@Database(entities = [Product::class], version = 1)
+@Database(entities = [Shop::class], version = 1)
 abstract class MyRoomDatabase: RoomDatabase() {
 
-    abstract fun productDao():ProductDao
+    abstract fun productDao():ShopDao
 
     companion object{
         private var instance: MyRoomDatabase? = null
@@ -19,7 +18,7 @@ abstract class MyRoomDatabase: RoomDatabase() {
             instance = Room.databaseBuilder(
                 context.applicationContext,
                 MyRoomDatabase::class.java,
-                "ProductDatabase"
+                "ShopDatabase"
             ).build();
 
             return instance!!

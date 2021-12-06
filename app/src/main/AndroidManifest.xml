@@ -13,16 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
         <activity
-            android:name=".Empty"
-            android:exported="true" />
-        <activity
             android:name=".AddOrEditActivity"
             android:exported="true" />
         <activity
             android:name=".OptionsActivity"
             android:exported="true" />
         <activity
-            android:name=".ProductListActivity"
+            android:name=".ShopListActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
