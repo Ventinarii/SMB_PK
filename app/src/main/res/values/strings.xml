@@ -29,4 +29,10 @@
     <string name="ActivityOptionsAutocontrastcolor" translatable="false">autoContrastColor</string>
     <string name="ActivityProductListSwich_modeButton">switch Mode</string>
     <string name="ActivityOptionsPolishlocaleSw">Polish langauge version</string>
+    <string name="shop_list_fp04">SHOP LIST - FP04</string>
+    <string name="map_fp04">MAP - FP04</string>
+    <string name="description">Description</string>
+    <string name="latitude">latitude</string>
+    <string name="longtitude">longtitude</string>
+    <string name="radius">radius</string>
 </resources>

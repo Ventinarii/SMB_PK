@@ -28,17 +28,24 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/ProductListButton"
+                android:id="@+id/ShopListButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="buAc01ProductList"
-                android:text="@string/ActivityMain01ProductList" />
+                android:onClick="buAc01ShopList"
+                android:text="@string/shop_list_fp04" />
+
+            <Button
+                android:id="@+id/MapButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="buAc02Map"
+                android:text="@string/map_fp04" />
 
             <Button
                 android:id="@+id/SettingsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="buAcXSettings"
+                android:enabled="false"
                 android:text="@string/ActivityMainXSettings" />
 
         </LinearLayout>

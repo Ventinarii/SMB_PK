@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.s17149">
 
-
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
         <activity
             android:name=".AddOrEditActivity"
             android:exported="true" />

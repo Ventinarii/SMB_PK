@@ -8,11 +8,11 @@ data class Shop(
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var name: String,
-    var qty: Float = 0f,
-    var price: Float = 0f,
-    var click: Boolean = false,
-    var UserId: Long = 0,
-    var Public: Boolean = false
+    var description: String,
+    var latitude: Long = 0L,
+    var longtitude: Long = 0L,
+    var favorite: Boolean = false,
+    var radius: Long = 0L,
 ) {
 
 }

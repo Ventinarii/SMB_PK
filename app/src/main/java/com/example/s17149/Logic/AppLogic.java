@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 
 import com.example.s17149.DataBase.Shop;
 import com.example.s17149.DataBase.ShopViewModel;
@@ -15,8 +18,9 @@ import java.util.stream.Collectors;
 public class AppLogic {
     //app activities & preferences -----------------------------------------------------------------
     public static Intent mainActivity;
-    public static Intent productListActivity;
+    public static Intent shopListActivity;
     public static Intent addOrEditActivity;
+    public static Intent mapActivity;
 
     public static Intent optionsActivity;
 
@@ -50,6 +54,10 @@ public class AppLogic {
             mainTextSize = 24;
     public static boolean
             isPolishLocale = false;
+    //=-
+    //notification Id ------------------------------------------------------------------------------
+    private static final String notidicationIdString = "notidicationId";
+    private static final int notidicationId = 0;
     //=-
     //============================================================================================== CODE
     /**
@@ -100,7 +108,6 @@ public class AppLogic {
         }
         reLoadSettings();
     }
-
     /**
      * this function reloads settings form shared preferences
      */
@@ -149,4 +156,6 @@ public class AppLogic {
     //============================================================================================== DATA EXCHANGE
     public static Shop shop;
     public static ShopViewModel shopViewModel;
+    public static LocationManager locationManager;
+    public static String locationProvider;
 }

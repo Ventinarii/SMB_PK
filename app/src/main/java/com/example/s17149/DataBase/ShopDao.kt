@@ -10,15 +10,15 @@ interface ShopDao {
     fun getProducts():LiveData<List<Shop>>
 
     @Insert
-    suspend fun insert(shop: Shop)
+    fun insert(shop: Shop)
 
     @Delete
-    suspend fun delete(shop: Shop)
+    fun delete(shop: Shop)
 
     @Update
-    suspend fun update(shop: Shop)
+    fun update(shop: Shop)
 
     @Query("DELETE FROM shop")
-    suspend fun deleteAll()
+    fun deleteAll()
 
 }

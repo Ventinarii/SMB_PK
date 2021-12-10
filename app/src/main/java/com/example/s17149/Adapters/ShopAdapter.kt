@@ -27,13 +27,13 @@ class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEdit
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position];
         val name = product.name;
-        val qty = product.qty.toString();
-        val price = product.price.toString() + "PLN/qty"
+        val qty = product.latitude.toString();
+        val price = product.longtitude.toString();
 
         holder.biding.namecheckBox.text = name;
         holder.biding.qtytextView.text = qty;
         holder.biding.costtextView.text = price;
-        holder.biding.namecheckBox.isChecked = product.click;
+        holder.biding.namecheckBox.isChecked = product.favorite;
         holder.id = product.id;
 
         holder.biding.deletebutton.setOnClickListener{
@@ -44,7 +44,7 @@ class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEdit
             shopEditInterface.editProductOver(product);
         }
         holder.biding.namecheckBox.setOnCheckedChangeListener { buttonView, isChecked -> kotlin.run {
-            product.click = isChecked;
+            product.favorite = isChecked;
             CoroutineScope(IO).launch { shopViewModel.update(product) }
             Toast.makeText(holder.biding.root.context,"updated: "+name,Toast.LENGTH_SHORT).show();
         }
