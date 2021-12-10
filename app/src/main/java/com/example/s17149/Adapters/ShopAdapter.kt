@@ -27,12 +27,12 @@ class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEdit
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position];
         val name = product.name;
-        val qty = product.latitude.toString();
-        val price = product.longtitude.toString();
+        val latitudeT = product.latitude.toString();
+        val longtitudeT = product.longtitude.toString();
 
         holder.biding.namecheckBox.text = name;
-        holder.biding.qtytextView.text = qty;
-        holder.biding.costtextView.text = price;
+        holder.biding.latitudeTextView.text = latitudeT;
+        holder.biding.longtitudeTextView.text = longtitudeT;
         holder.biding.namecheckBox.isChecked = product.favorite;
         holder.id = product.id;
 

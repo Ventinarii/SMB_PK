@@ -12,6 +12,7 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
@@ -53,31 +54,20 @@ class MainActivity : AppCompatActivity() {
      * this function fills variables in AppLogic responsible for location & checks permissions for using those
      * IF vars & permissions are OK returns true - otherwise false.
      */
+    @SuppressLint("MissingPermission")
     fun checkPermissions(): Boolean{
-        if(AppLogic.locationManager==null){
-            AppLogic.locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager;
-        }
-        if(AppLogic.locationProvider==null){
-            val crt = Criteria();
-            crt.accuracy = Criteria.ACCURACY_FINE;
-            AppLogic.locationProvider = AppLogic.locationManager.getBestProvider(crt,false);
-        }
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestPermissions(arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ),0);
-            doOnce();
-            return false;
-        }
+        AppLogic.locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager;
+        val crt = Criteria();
+        crt.accuracy = Criteria.ACCURACY_FINE;
+        AppLogic.locationProvider = AppLogic.locationManager.getBestProvider(crt,false);
+
+        requestPermissions(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ),0);
+        doOnce();
+        var location = AppLogic.locationManager.getLastKnownLocation(AppLogic.locationProvider);
+        if(location!=null)Toast.makeText(this,"loc: ${location.latitude}, ${location.longitude}",Toast.LENGTH_LONG).show();
         return true;
     }
 

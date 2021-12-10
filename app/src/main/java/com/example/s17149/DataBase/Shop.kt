@@ -9,10 +9,10 @@ data class Shop(
     var id: Long = 0,
     var name: String,
     var description: String,
-    var latitude: Long = 0L,
-    var longtitude: Long = 0L,
+    var latitude: Double = 0.0,
+    var longtitude: Double = 0.0,
     var favorite: Boolean = false,
-    var radius: Long = 0L,
+    var radius: Double = 0.0,
 ) {
 
 }
