@@ -7,13 +7,13 @@ import androidx.lifecycle.LiveData
 class ShopViewModel(app: Application):AndroidViewModel(app) {
 
     private val repo: ShopRepo;
-    public val allProducts: LiveData<List<Shop>>;
+    public val allShops: LiveData<List<Shop>>;
 
     init{
         val db = MyRoomDatabase.getDatabase(app);
         val productDao = db.productDao()
         repo = ShopRepo(productDao);
-        allProducts = repo.allProducts;
+        allShops = repo.allProducts;
     }
 
     suspend fun insert(shop: Shop) = repo.insert(shop);

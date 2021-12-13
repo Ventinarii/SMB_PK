@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         AppLogic.mainActivity = Intent(this,MainActivity::class.java);
         AppLogic.shopListActivity = Intent(this,ShopListActivity::class.java);
         AppLogic.addOrEditActivity = Intent(this,AddOrEditActivity::class.java);
-        AppLogic.mapActivity = Intent(this,MapActivity::class.java);
+        AppLogic.mapActivity = Intent(this,MapsActivity::class.java);
         //AppLogic.optionsActivity = Intent(this,OptionsActivity::class.java);
 
         checkPermissions();
@@ -88,6 +88,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             AppLogic.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000L,1F,locationListener);
+
+
+
         }
     }
 }

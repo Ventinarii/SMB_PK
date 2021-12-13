@@ -28,7 +28,7 @@ class ShopListActivity : AppCompatActivity(), ShopEditInterface{
         val viewModel = ShopViewModel(this.application);
         AppLogic.shopViewModel = viewModel;
         val adapter = ShopAdapter(viewModel,this);
-        viewModel.allProducts.observe(this, Observer {
+        viewModel.allShops.observe(this, Observer {
             it.let {
                 adapter.setProducts(it);
             }
