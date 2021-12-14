@@ -25,10 +25,10 @@ class ShopListActivity : AppCompatActivity(), ShopEditInterface{
         biding.rv1.layoutManager = LinearLayoutManager(this);
         biding.rv1.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        val viewModel = ShopViewModel(this.application);
-        AppLogic.shopViewModel = viewModel;
-        val adapter = ShopAdapter(viewModel,this);
-        viewModel.allShops.observe(this, Observer {
+
+        if(AppLogic.shopViewModel==null)AppLogic.shopViewModel = ShopViewModel(this.application);
+        val adapter = ShopAdapter(AppLogic.shopViewModel,this);
+        AppLogic.shopViewModel.allShops.observe(this, Observer {
             it.let {
                 adapter.setProducts(it);
             }

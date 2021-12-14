@@ -2,8 +2,11 @@ package com.example.s17149
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.PendingIntent
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -34,8 +37,21 @@ class AddOrEditActivity : AppCompatActivity() {
         startActivity(AppLogic.shopListActivity);
     }
 
+    @SuppressLint("MissingPermission")
     fun buAcSave(view: android.view.View) {
         if(AppLogic.shop!=null){
+            //delete old alert
+            val intent = Intent("ACTION_PROXIMITY_ALERT").also {
+                it.putExtra("latitude",AppLogic.shop.latitude);
+                it.putExtra("longtitude",AppLogic.shop.longtitude)
+                it.putExtra("name",AppLogic.shop.name)
+                it.putExtra("description",AppLogic.shop.description)
+                it.putExtra("id",AppLogic.shop.id)
+            }
+            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_CANCEL_CURRENT)
+
+            AppLogic.locationManager.removeProximityAlert(pendingIntent);
+            //modify object
             AppLogic.shop.name = biding.nameTextField.text.toString();
             AppLogic.shop.description = biding.descriptionTextField.text.toString();
             AppLogic.shop.latitude = biding.latitudeTextField.text.toString().toDouble();
@@ -58,6 +74,23 @@ class AddOrEditActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.insert(AppLogic.shop) }
             Toast.makeText(this,"added: "+AppLogic.shop.name, Toast.LENGTH_SHORT).show();
         }
+        //add new alert
+        val intent = Intent("ACTION_PROXIMITY_ALERT").also {
+            it.putExtra("latitude",AppLogic.shop.latitude);
+            it.putExtra("longtitude",AppLogic.shop.longtitude)
+            it.putExtra("name",AppLogic.shop.name)
+            it.putExtra("description",AppLogic.shop.description)
+            it.putExtra("id",AppLogic.shop.id)
+        }
+        val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_CANCEL_CURRENT)
+
+        AppLogic.locationManager.addProximityAlert(
+            AppLogic.shop.latitude,
+            AppLogic.shop.longtitude,
+            AppLogic.shop.radius.toFloat(),
+            600000L,
+            pendingIntent)
+
         startActivity(AppLogic.shopListActivity);
     }
 
@@ -87,7 +120,7 @@ class AddOrEditActivity : AppCompatActivity() {
                 biding.latitudeTextField.setText((0L).toString());
                 biding.longtitudeTextField.setText((0L).toString());
             }
-            biding.radiusTextField.setText((100L).toString());
+            biding.radiusTextField.setText((5000L).toString());
         }
     }
 

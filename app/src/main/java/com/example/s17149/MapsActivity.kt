@@ -49,9 +49,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
          */
-        ShopViewModel(this.application)
-            .allShops
-            .value
+        if(AppLogic.shopViewModel==null)AppLogic.shopViewModel = ShopViewModel(this.application);
+        AppLogic.shopViewModel
+            ?.allShops
+            ?.value
             ?.stream()
             ?.forEach { e->
                 mMap

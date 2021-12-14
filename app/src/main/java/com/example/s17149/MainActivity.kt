@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.Criteria
 import android.location.Location
@@ -14,6 +15,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
 
@@ -73,6 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     private var done = false;
     private lateinit var locationListener: LocationListener
+    private lateinit var geoLocReceiver: GeoLocReceiver
     /**
      * this func is called by checkPermissions and sets up listener for notifications. it will attempt to do so
      * 1) on app start
@@ -88,9 +91,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             AppLogic.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000L,1F,locationListener);
-
-
-
+            //add receiver
+            geoLocReceiver = GeoLocReceiver();
+            val intentFilter = IntentFilter("ACTION_PROXIMITY_ALERT");
+            registerReceiver(geoLocReceiver,intentFilter);
         }
     }
 }
