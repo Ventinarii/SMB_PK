@@ -1,16 +1,11 @@
 package com.example.s17149.Adapters
 
-import android.app.PendingIntent
-import android.content.ComponentName
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.DataBase.Shop
 import com.example.s17149.DataBase.ShopViewModel
-import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.DataRowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO

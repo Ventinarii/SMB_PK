@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.s17149"
-        minSdk 28
-        targetSdk 28
+        minSdk 30
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.1'
+    implementation 'com.google.android.gms:play-services-location:19.0.0'
     def room_version = "2.3.0"
 
     implementation "androidx.room:room-runtime:$room_version"

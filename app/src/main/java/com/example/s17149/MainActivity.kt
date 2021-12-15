@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.location.Criteria
 import android.location.Location
@@ -15,7 +14,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityMainBinding
 
@@ -56,27 +54,41 @@ class MainActivity : AppCompatActivity() {
      * this function fills variables in AppLogic responsible for location & checks permissions for using those
      * IF vars & permissions are OK returns true - otherwise false.
      */
-    @SuppressLint("MissingPermission")
     fun checkPermissions(): Boolean{
         AppLogic.locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager;
         val crt = Criteria();
         crt.accuracy = Criteria.ACCURACY_FINE;
         AppLogic.locationProvider = AppLogic.locationManager.getBestProvider(crt,false);
 
-        requestPermissions(arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
-        ),0);
-        doOnce();
-        var location = AppLogic.locationManager.getLastKnownLocation(AppLogic.locationProvider);
-        if(location!=null)Toast.makeText(this,"loc: ${location.latitude}, ${location.longitude}",Toast.LENGTH_LONG).show();
-        return true;
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_BACKGROUND_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+
+        ) {
+            this.requestPermissions(arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+            ),0);
+            return false;
+        }else{
+            doOnce();
+            var location = AppLogic.locationManager.getLastKnownLocation(AppLogic.locationProvider);
+            if(location!=null)Toast.makeText(this,"loc: ${location.latitude}, ${location.longitude}",Toast.LENGTH_LONG).show();
+            return true;
+        }
     }
 
     private var done = false;
     private lateinit var locationListener: LocationListener
-    private lateinit var geoLocReceiver: GeoLocReceiver
+
     /**
      * this func is called by checkPermissions and sets up listener for notifications. it will attempt to do so
      * 1) on app start
@@ -93,9 +105,6 @@ class MainActivity : AppCompatActivity() {
             }
             AppLogic.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000L,1F,locationListener);
             //add receiver
-            geoLocReceiver = GeoLocReceiver();
-            val intentFilter = IntentFilter();
-            registerReceiver(geoLocReceiver,intentFilter);
         }
     }
 }

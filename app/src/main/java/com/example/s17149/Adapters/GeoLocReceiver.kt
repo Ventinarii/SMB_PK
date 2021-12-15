@@ -1,22 +1,14 @@
-package com.example.s17149.Brodcast
+package com.example.s17149.Adapters
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import android.location.LocationManager
 
-import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import com.example.s17149.Logic.AppLogic
 import com.example.s17149.R
 
 
@@ -29,14 +21,14 @@ class GeoLocReceiver : BroadcastReceiver() {
         if (intent.data != null) Log.d("S17149PK_GeoLocReceiver_onReceive", intent.data.toString())
         val extras = intent.extras
         if (extras != null) {
-            Log.d("S17149PK_GeoLocReceiver_onReceive", "Entering? " + extras.getBoolean(LocationManager.KEY_PROXIMITY_ENTERING))
+            Log.d("S17149PK_GeoLocReceiver_onReceive", "Entering? " + extras.getBoolean("ENTER?"))
 
             val latitude    = extras.getDouble("latitude",0.0);
             val longtitude  = extras.getDouble("longtitude",0.0);
             val name        = extras.getString("name","WTF");
             val description = extras.getString("description","WTF");
             val id          = extras.getLong("id",0);
-            val enter       = extras.getBoolean(LocationManager.KEY_PROXIMITY_ENTERING)
+            val enter       = extras.getBoolean("ENTER?")
 
             //create notification
             val notification = NotificationCompat

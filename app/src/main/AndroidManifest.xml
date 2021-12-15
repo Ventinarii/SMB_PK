@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
         <receiver
-            android:name="com.example.s17149.Brodcast.GeoLocReceiver"
+            android:name="com.example.s17149.Adapters.GeoLocReceiver"
             android:enabled="true"
             android:exported="true">
         </receiver>

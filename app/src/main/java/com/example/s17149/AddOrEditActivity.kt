@@ -1,18 +1,10 @@
 package com.example.s17149
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.PendingIntent
-import android.content.ComponentName
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Location
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.DataBase.Shop
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityAddOrEditBinding
@@ -93,10 +85,10 @@ class AddOrEditActivity : AppCompatActivity() {
                 biding.latitudeTextField.setText((location.latitude.toString()));
                 biding.longtitudeTextField.setText((location.longitude.toString()));
             }else{
-                biding.latitudeTextField.setText((0L).toString());
-                biding.longtitudeTextField.setText((0L).toString());
+                biding.latitudeTextField.setText((0.0).toString());
+                biding.longtitudeTextField.setText((0.0).toString());
             }
-            biding.radiusTextField.setText((5000L).toString());
+            biding.radiusTextField.setText((500.0).toString());
         }
     }
 
