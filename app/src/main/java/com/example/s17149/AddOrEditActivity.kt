@@ -33,20 +33,8 @@ class AddOrEditActivity : AppCompatActivity() {
     fun buAcDelete(view: android.view.View) {
         if(AppLogic.shop!=null){
             val name = AppLogic.shop.name;
-            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.delete(AppLogic.shop) }
+            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.delete(AppLogic.shop,applicationContext) }
             Toast.makeText(this,"deleted: "+name, Toast.LENGTH_SHORT).show();
-
-            val intent = Intent().setComponent(
-                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")
-            ).also {
-                it.putExtra("latitude",AppLogic.shop.latitude);
-                it.putExtra("longtitude",AppLogic.shop.longtitude)
-                it.putExtra("name",AppLogic.shop.name)
-                it.putExtra("description",AppLogic.shop.description)
-                it.putExtra("id",AppLogic.shop.id)
-            }
-            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-            AppLogic.locationManager.removeProximityAlert(pendingIntent);
         }
         startActivity(AppLogic.shopListActivity);
     }
@@ -54,18 +42,7 @@ class AddOrEditActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     fun buAcSave(view: android.view.View) {
         if(AppLogic.shop!=null){
-            //delete old alert
-            val intent = Intent().setComponent(
-                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
-                it.putExtra("latitude",AppLogic.shop.latitude);
-                it.putExtra("longtitude",AppLogic.shop.longtitude)
-                it.putExtra("name",AppLogic.shop.name)
-                it.putExtra("description",AppLogic.shop.description)
-                it.putExtra("id",AppLogic.shop.id)
-            }
-            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-            AppLogic.locationManager.removeProximityAlert(pendingIntent);
-
+            val shop = AppLogic.shop.copy();
             //modify object
             AppLogic.shop.name = biding.nameTextField.text.toString();
             AppLogic.shop.description = biding.descriptionTextField.text.toString();
@@ -73,7 +50,7 @@ class AddOrEditActivity : AppCompatActivity() {
             AppLogic.shop.longtitude = biding.longtitudeTextField.text.toString().toDouble();
             AppLogic.shop.radius = biding.radiusTextField.text.toString().toDouble();
 
-            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.update(AppLogic.shop) }
+            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.update(shop,AppLogic.shop, applicationContext) }
             Toast.makeText(this,"edited: "+AppLogic.shop.name, Toast.LENGTH_SHORT).show();
         }else{
             AppLogic.shop = Shop(
@@ -86,27 +63,10 @@ class AddOrEditActivity : AppCompatActivity() {
                 favorite = false
             );
 
-            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.insert(AppLogic.shop) }
+            CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.insert(AppLogic.shop,applicationContext) }
             Toast.makeText(this,"added: "+AppLogic.shop.name, Toast.LENGTH_SHORT).show();
         }
         //add new alert
-        val intent = Intent().setComponent(
-            ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
-            it.putExtra("latitude",AppLogic.shop.latitude);
-            it.putExtra("longtitude",AppLogic.shop.longtitude)
-            it.putExtra("name",AppLogic.shop.name)
-            it.putExtra("description",AppLogic.shop.description)
-            it.putExtra("id",AppLogic.shop.id)
-        }
-        val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-
-        AppLogic.locationManager.addProximityAlert(
-            AppLogic.shop.latitude,
-            AppLogic.shop.longtitude,
-            AppLogic.shop.radius.toFloat(),
-            24*60*60*1000,
-            pendingIntent)
-
         startActivity(AppLogic.shopListActivity);
     }
 

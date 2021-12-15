@@ -42,27 +42,15 @@ class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEdit
         holder.id = product.id;
 
         holder.biding.deletebutton.setOnClickListener{
-            CoroutineScope(IO).launch { shopViewModel.delete(product) }
+            CoroutineScope(IO).launch { shopViewModel.delete(product,holder.biding.root.context) }
             Toast.makeText(holder.biding.root.context,"deleted: "+name,Toast.LENGTH_SHORT).show();
-
-            val intent = Intent().setComponent(
-                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
-                it.putExtra("latitude", product.latitude);
-                it.putExtra("longtitude", product.longtitude)
-                it.putExtra("name", product.name)
-                it.putExtra("description", product.description)
-                it.putExtra("id", product.id)
-            }
-
-            val pendingIntent = PendingIntent.getService(holder.biding.root.context,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-            AppLogic.locationManager.removeProximityAlert(pendingIntent);
         }
         holder.biding.editbutton.setOnClickListener{
             shopEditInterface.editProductOver(product);
         }
         holder.biding.namecheckBox.setOnCheckedChangeListener { buttonView, isChecked -> kotlin.run {
             product.favorite = isChecked;
-            CoroutineScope(IO).launch { shopViewModel.update(product) }
+            CoroutineScope(IO).launch { shopViewModel.update(null,product,holder.biding.root.context) }
             Toast.makeText(holder.biding.root.context,"updated: "+name,Toast.LENGTH_SHORT).show();
         }
         }
