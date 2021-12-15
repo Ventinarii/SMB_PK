@@ -1,11 +1,16 @@
 package com.example.s17149.Adapters
 
+import android.app.PendingIntent
+import android.content.ComponentName
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.DataBase.Shop
 import com.example.s17149.DataBase.ShopViewModel
+import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.DataRowBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -39,6 +44,18 @@ class ShopAdapter(private val shopViewModel: ShopViewModel, private val shopEdit
         holder.biding.deletebutton.setOnClickListener{
             CoroutineScope(IO).launch { shopViewModel.delete(product) }
             Toast.makeText(holder.biding.root.context,"deleted: "+name,Toast.LENGTH_SHORT).show();
+
+            val intent = Intent().setComponent(
+                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
+                it.putExtra("latitude", product.latitude);
+                it.putExtra("longtitude", product.longtitude)
+                it.putExtra("name", product.name)
+                it.putExtra("description", product.description)
+                it.putExtra("id", product.id)
+            }
+
+            val pendingIntent = PendingIntent.getService(holder.biding.root.context,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            AppLogic.locationManager.removeProximityAlert(pendingIntent);
         }
         holder.biding.editbutton.setOnClickListener{
             shopEditInterface.editProductOver(product);

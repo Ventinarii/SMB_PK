@@ -3,6 +3,7 @@ package com.example.s17149
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.s17149.Brodcast.GeoLocReceiver
 import com.example.s17149.DataBase.Shop
 import com.example.s17149.Logic.AppLogic
 import com.example.s17149.databinding.ActivityAddOrEditBinding
@@ -33,6 +35,18 @@ class AddOrEditActivity : AppCompatActivity() {
             val name = AppLogic.shop.name;
             CoroutineScope(Dispatchers.IO).launch { AppLogic.shopViewModel.delete(AppLogic.shop) }
             Toast.makeText(this,"deleted: "+name, Toast.LENGTH_SHORT).show();
+
+            val intent = Intent().setComponent(
+                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")
+            ).also {
+                it.putExtra("latitude",AppLogic.shop.latitude);
+                it.putExtra("longtitude",AppLogic.shop.longtitude)
+                it.putExtra("name",AppLogic.shop.name)
+                it.putExtra("description",AppLogic.shop.description)
+                it.putExtra("id",AppLogic.shop.id)
+            }
+            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
+            AppLogic.locationManager.removeProximityAlert(pendingIntent);
         }
         startActivity(AppLogic.shopListActivity);
     }
@@ -41,16 +55,17 @@ class AddOrEditActivity : AppCompatActivity() {
     fun buAcSave(view: android.view.View) {
         if(AppLogic.shop!=null){
             //delete old alert
-            val intent = Intent("ACTION_PROXIMITY_ALERT").also {
+            val intent = Intent().setComponent(
+                ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
                 it.putExtra("latitude",AppLogic.shop.latitude);
                 it.putExtra("longtitude",AppLogic.shop.longtitude)
                 it.putExtra("name",AppLogic.shop.name)
                 it.putExtra("description",AppLogic.shop.description)
                 it.putExtra("id",AppLogic.shop.id)
             }
-            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_CANCEL_CURRENT)
-
+            val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
             AppLogic.locationManager.removeProximityAlert(pendingIntent);
+
             //modify object
             AppLogic.shop.name = biding.nameTextField.text.toString();
             AppLogic.shop.description = biding.descriptionTextField.text.toString();
@@ -75,20 +90,21 @@ class AddOrEditActivity : AppCompatActivity() {
             Toast.makeText(this,"added: "+AppLogic.shop.name, Toast.LENGTH_SHORT).show();
         }
         //add new alert
-        val intent = Intent("ACTION_PROXIMITY_ALERT").also {
+        val intent = Intent().setComponent(
+            ComponentName("com.example.s17149.Brodcast","com.example.s17149.Brodcast.GeoLocReceiver")).also {
             it.putExtra("latitude",AppLogic.shop.latitude);
             it.putExtra("longtitude",AppLogic.shop.longtitude)
             it.putExtra("name",AppLogic.shop.name)
             it.putExtra("description",AppLogic.shop.description)
             it.putExtra("id",AppLogic.shop.id)
         }
-        val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_CANCEL_CURRENT)
+        val pendingIntent = PendingIntent.getService(applicationContext,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
         AppLogic.locationManager.addProximityAlert(
             AppLogic.shop.latitude,
             AppLogic.shop.longtitude,
             AppLogic.shop.radius.toFloat(),
-            600000L,
+            24*60*60*1000,
             pendingIntent)
 
         startActivity(AppLogic.shopListActivity);

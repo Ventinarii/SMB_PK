@@ -21,9 +21,6 @@
             android:name="com.example.s17149.Brodcast.GeoLocReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
-                <action android:name="ACTION_PROXIMITY_ALERT"/>
-            </intent-filter>
         </receiver>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

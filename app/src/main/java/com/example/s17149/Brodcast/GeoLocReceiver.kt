@@ -26,7 +26,7 @@ class GeoLocReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
 
-        if (intent.data != null) Log.v("S17149PK_GeoLocReceiver_onReceive", intent.data.toString())
+        if (intent.data != null) Log.d("S17149PK_GeoLocReceiver_onReceive", intent.data.toString())
         val extras = intent.extras
         if (extras != null) {
             Log.d("S17149PK_GeoLocReceiver_onReceive", "Entering? " + extras.getBoolean(LocationManager.KEY_PROXIMITY_ENTERING))

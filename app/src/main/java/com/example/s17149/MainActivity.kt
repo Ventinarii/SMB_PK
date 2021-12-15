@@ -65,7 +65,8 @@ class MainActivity : AppCompatActivity() {
 
         requestPermissions(arrayOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_BACKGROUND_LOCATION,
         ),0);
         doOnce();
         var location = AppLogic.locationManager.getLastKnownLocation(AppLogic.locationProvider);
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
             AppLogic.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3000L,1F,locationListener);
             //add receiver
             geoLocReceiver = GeoLocReceiver();
-            val intentFilter = IntentFilter("ACTION_PROXIMITY_ALERT");
+            val intentFilter = IntentFilter();
             registerReceiver(geoLocReceiver,intentFilter);
         }
     }
