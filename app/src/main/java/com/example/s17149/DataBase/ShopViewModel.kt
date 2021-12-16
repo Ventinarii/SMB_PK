@@ -83,7 +83,7 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
             it.putExtra("id", shop.id)
             it.putExtra("ENTER?",true)
         }
-        var pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         //---
         var geo = Geofence
             .Builder()
@@ -107,7 +107,7 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
 
         //for exiting===============================================================================
         intent.putExtra("ENTER?",false)
-        pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         //---
         geo = geo
             .setRequestId("Geofence-${-gId}")
@@ -135,11 +135,11 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
             it.putExtra("id", shop.id)
             it.putExtra("ENTER?",true)
         }
-        var pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         geoClient.removeGeofences(pendingIntent);
         //for exiting===============================================================================
         intent.putExtra("ENTER?",false)
-        pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_ONE_SHOT)
+        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         geoClient.removeGeofences(pendingIntent)
             .addOnFailureListener {
                 e6-> Log.wtf("S17149PK_ShopViewModel_DelGeoAlert_6",e6.toString())
