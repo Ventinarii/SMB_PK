@@ -81,7 +81,6 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
             it.putExtra("name", shop.name)
             it.putExtra("description", shop.description)
             it.putExtra("id", shop.id)
-            it.putExtra("ENTER?",true)
         }
         var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         //---
@@ -93,7 +92,7 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
                 shop.latitude,
                 shop.longtitude,
                 shop.radius.toFloat())
-            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER)// or Geofence.GEOFENCE_TRANSITION_EXIT)
+            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER or Geofence.GEOFENCE_TRANSITION_EXIT)
         var geoRequest = GeofencingRequest
             .Builder()
             .addGeofence(geo.build())
@@ -104,24 +103,6 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
             .addOnFailureListener {
                     e2-> Log.wtf("S17149PK_ShopViewModel_AddGeoAlert_2",e2.toString())
             }//.addOnSuccessListener(OnSuccessListener { Log.v("S17149PK_ShopViewModel_AddGeoAlert","OK1") })
-
-        //for exiting===============================================================================
-        intent.putExtra("ENTER?",false)
-        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        //---
-        geo = geo
-            .setRequestId("Geofence-${-gId}")
-            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_EXIT)
-        geoRequest = GeofencingRequest
-            .Builder()
-            .addGeofence(geo.build())
-        geoRequestBuild = geoRequest.build()
-        //---
-        geoClient.addGeofences(geoRequestBuild,pendingIntent)
-            .addOnFailureListener {
-                e4-> Log.wtf("S17149PK_ShopViewModel_AddGeoAlert_4",e4.toString())
-            }//.addOnSuccessListener(OnSuccessListener { Log.v("S17149PK_ShopViewModel_AddGeoAlert","OK2") })
-        //==========================================================================================
         gId++;
     }
     private suspend fun delGeoAlert(shop: Shop,context: Context){
@@ -133,7 +114,6 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
             it.putExtra("name", shop.name)
             it.putExtra("description", shop.description)
             it.putExtra("id", shop.id)
-            it.putExtra("ENTER?",true)
         }
         var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         geoClient.removeGeofences(pendingIntent);

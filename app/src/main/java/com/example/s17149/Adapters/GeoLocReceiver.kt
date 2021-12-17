@@ -10,6 +10,7 @@ import androidx.core.app.NotificationManagerCompat
 
 import android.util.Log
 import com.example.s17149.R
+import com.google.android.gms.location.Geofence
 
 
 class GeoLocReceiver : BroadcastReceiver() {
@@ -21,14 +22,14 @@ class GeoLocReceiver : BroadcastReceiver() {
         if (intent.data != null) Log.d("S17149PK_GeoLocReceiver_onReceive", intent.data.toString())
         val extras = intent.extras
         if (extras != null) {
-            Log.d("S17149PK_GeoLocReceiver_onReceive", "Entering? " + extras.getBoolean("ENTER?"))
+            Log.d("S17149PK_GeoLocReceiver_onReceive", "Entering? " + (extras.getInt("com.google.android.location.intent.extra.transition")==(Geofence.GEOFENCE_TRANSITION_ENTER)))
 
             val latitude    = extras.getDouble("latitude",0.0);
             val longtitude  = extras.getDouble("longtitude",0.0);
             val name        = extras.getString("name","WTF");
             val description = extras.getString("description","WTF");
             val id          = extras.getLong("id",0);
-            val enter       = extras.getBoolean("ENTER?")
+            val enter       = (extras.getInt("com.google.android.location.intent.extra.transition")==(Geofence.GEOFENCE_TRANSITION_ENTER))
 
             //create notification
             val notification = NotificationCompat
