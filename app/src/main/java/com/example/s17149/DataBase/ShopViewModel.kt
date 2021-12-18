@@ -117,12 +117,5 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
         }
         var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         geoClient.removeGeofences(pendingIntent);
-        //for exiting===============================================================================
-        intent.putExtra("ENTER?",false)
-        pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        geoClient.removeGeofences(pendingIntent)
-            .addOnFailureListener {
-                e6-> Log.wtf("S17149PK_ShopViewModel_DelGeoAlert_6",e6.toString())
-            }//.addOnSuccessListener(OnSuccessListener { Log.v("S17149PK_ShopViewModel_AddGeoAlert","OK3") })
     }
 }
