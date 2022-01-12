@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
         <receiver
-            android:name=".MP5"
+            android:name="com.example.s17149.MP5"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -29,10 +29,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/m_p5_info" />
         </receiver>
-        <receiver
-            android:name=".Adapters.GeoLocReceiver"
-            android:enabled="true"
-            android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

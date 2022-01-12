@@ -1,5 +1,6 @@
 package com.example.s17149.Logic;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 
 import com.example.s17149.DataBase.MyRoomDatabase;
@@ -17,7 +18,13 @@ public class WigetLogic {
             dao = db.productDao();
             repo = new ShopRepo(dao);
         }
+
     }
 
+    public static boolean firstImage = true;
 
+    public static boolean firstSong = true;
+
+    public static AppWidgetManager appWidgetManager;
+    public static int appWidgetId;
 }
