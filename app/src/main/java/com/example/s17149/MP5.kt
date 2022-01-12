@@ -54,7 +54,7 @@ internal fun updateAppWidget(
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.m_p5);
     views.setTextViewText(R.id.textView, widgetText);
-    views.setImageViewResource(R.id.imageView,R.drawable.wallpaer);
+    views.setImageViewResource(R.id.imageView,R.drawable.wallper);
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

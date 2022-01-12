@@ -39,7 +39,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:srcCompat="@drawable/wallpaer" />
+        app:srcCompat="@drawable/wallper" />
 
     <Button
         android:id="@+id/PausePlay"
