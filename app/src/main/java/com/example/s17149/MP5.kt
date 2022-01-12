@@ -1,8 +1,11 @@
 package com.example.s17149
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.widget.RemoteViews
 import com.example.s17149.Adapters.ShopAdapter
 import com.example.s17149.DataBase.ShopViewModel
@@ -32,7 +35,9 @@ class MP5 : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
 }
+
 
 internal fun updateAppWidget(
     context: Context,
@@ -51,11 +56,23 @@ internal fun updateAppWidget(
         ?.get();
     if(widgetText.isNullOrEmpty())
         widgetText = "no shops for display";
-    // Construct the RemoteViews object
+
+    var siteIntent = Intent(Intent.ACTION_VIEW);
+    siteIntent.data = Uri.parse("https://www.pja.edu.pl")
+    val pendingIntent = PendingIntent.getActivity(
+        context,
+        0,
+        siteIntent,
+        PendingIntent.FLAG_UPDATE_CURRENT
+    );
+
+    // Construct the RemoteViews object=============================================================
     val views = RemoteViews(context.packageName, R.layout.m_p5);
     views.setTextViewText(R.id.textView, widgetText);
     views.setImageViewResource(R.id.imageView,R.drawable.wallper);
+    views.setOnClickPendingIntent(R.id.Browser,pendingIntent);
 
-    // Instruct the widget manager to update the widget
+
+    // Instruct the widget manager to update the widget=============================================
     appWidgetManager.updateAppWidget(appWidgetId, views)
 }
