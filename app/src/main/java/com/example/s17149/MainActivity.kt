@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         AppLogic.shopListActivity = Intent(this,ShopListActivity::class.java);
         AppLogic.addOrEditActivity = Intent(this,AddOrEditActivity::class.java);
         AppLogic.mapActivity = Intent(this,MapsActivity::class.java);
-        //AppLogic.optionsActivity = Intent(this,OptionsActivity::class.java);
 
         checkPermissions();
     }
@@ -70,7 +69,6 @@ class MainActivity : AppCompatActivity() {
                 this,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
-
         ) {
             this.requestPermissions(arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -88,7 +86,6 @@ class MainActivity : AppCompatActivity() {
 
     private var done = false;
     private lateinit var locationListener: LocationListener
-
     /**
      * this func is called by checkPermissions and sets up listener for notifications. it will attempt to do so
      * 1) on app start

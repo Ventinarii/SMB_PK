@@ -19,10 +19,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S17149">
         <receiver
-            android:name="com.example.s17149.Adapters.GeoLocReceiver"
-            android:enabled="true"
+            android:name=".MP5"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/m_p5_info" />
         </receiver>
+        <receiver
+            android:name=".Adapters.GeoLocReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,19 +44,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".MapActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddOrEditActivity"
-            android:exported="true" />
-        <activity
-            android:name=".OptionsActivity"
             android:exported="true" />
         <activity
             android:name=".ShopListActivity"
