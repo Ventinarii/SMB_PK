@@ -32,28 +32,29 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
     }
 
     suspend fun insert(shop: Shop,context: Context) {
-        addGeoAlert(shop,context,true);
+        //addGeoAlert(shop,context,true);
         repo.insert(shop);
     }
 
     suspend fun delete(shop: Shop,context: Context) {
-        delGeoAlert(shop,context);
+        //delGeoAlert(shop,context);
         repo.delete(shop);
     }
 
     suspend fun update(shopOld: Shop?,shopNew: Shop,context: Context) {
-        if(shopOld!=null){
-            delGeoAlert(shopOld,context);
-            addGeoAlert(shopNew,context,false);
-        }
+        //if(shopOld!=null){
+        //    delGeoAlert(shopOld,context);
+        //    addGeoAlert(shopNew,context,false);
+        //}
         repo.update(shopNew);
     }
 
     suspend fun deleteAll(context: Context) {
-        allShops.value?.forEach{e->delGeoAlert(e,context);};
+        //allShops.value?.forEach{e->delGeoAlert(e,context);};
         repo.deleteAll();
     }
 
+    /*
     private lateinit var geoClient:GeofencingClient;
     private lateinit var geoLocReceiver: GeoLocReceiver
     private var gId = 0;
@@ -118,4 +119,5 @@ class ShopViewModel(app: Application):AndroidViewModel(app) {
         var pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         geoClient.removeGeofences(pendingIntent);
     }
+     */
 }
