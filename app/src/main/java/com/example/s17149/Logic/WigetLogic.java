@@ -2,6 +2,7 @@ package com.example.s17149.Logic;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.media.MediaPlayer;
 
 import com.example.s17149.DataBase.MyRoomDatabase;
 import com.example.s17149.DataBase.ShopDao;
@@ -18,13 +19,25 @@ public class WigetLogic {
             dao = db.productDao();
             repo = new ShopRepo(dao);
         }
-
     }
 
     public static boolean firstImage = true;
 
+    public static MediaPlayer player;
     public static boolean firstSong = true;
+    public static status playerStatus = status.empty;
+    public enum status{
+        empty,
+        preapared,
+        started,
+        paused,
+        stopped,
+        complete
+    };
+    //void
+    //prep
 
     public static AppWidgetManager appWidgetManager;
     public static int appWidgetId;
+
 }
